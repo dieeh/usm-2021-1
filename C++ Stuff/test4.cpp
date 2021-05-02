@@ -31,30 +31,30 @@ void separarHora(string hora, int &hora2, int &minutos){
 
 //funcion principal
 int cantidadPersonas(string horaF2) { 
-    fstream file;
+    fstream fileEmp, fileComp;
     string s, temp, temp2,temp3,temp4;
     int n, j=0, k=0, b=0;
 
     int hora2 = 0, minutos = 0;
     separarHora(horaF2, hora2, minutos);
        
-    file.open("asistencia.txt", ios::in);
-    if (!file.is_open()) {
+    fileEmp.open("asistencia.txt", ios::in);
+    if (!fileEmp.is_open()) {
         cout << "Error al abrir el archivo" << endl;
         exit(1);
     }
-    while(getline(file, temp)) {
+    while(getline(fileEmp, temp)) {
         n++;
     }
     string arrEnt[n], arrSal[n];
 
-    while (getline(file, s)) { 
+    while (getline(fileEmp, s)) { 
         int tempH, tempM, b;
         bool esta = false, esta2 = false;
-        file >> temp2; //E
+        fileEmp >> temp2; //E
         char temp_ch = s[0];
-        file >> temp3; //rut
-        file >> temp4; //hora
+        fileEmp >> temp3; //rut
+        fileEmp >> temp4; //hora
         separarHora(temp4, tempH, tempM);
         for (int z = 0; z < n; z++)
         {
@@ -91,9 +91,12 @@ int cantidadPersonas(string horaF2) {
             }
         }
     }
-   
+    fileEmp.close();
+
+    fileComp.open("flujo-publico.dat", ios::binary);
+
     
-    file.close();
+    fileComp.close();
     return b;
 }
 
