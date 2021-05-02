@@ -19,7 +19,7 @@ int salidas;
 
 //funcion separar hora
 void separarHora(string hora, int &hora2, int &minutos){
-    if (!hora.length() == 5) {
+    if (hora.length() != 5) {
         cout << "Error en el largo del string hora" << endl;
         exit(1);
     }
@@ -33,7 +33,7 @@ void separarHora(string hora, int &hora2, int &minutos){
 int cantidadPersonas(string horaF2) { 
     fstream file;
     string s, temp, temp2,temp3,temp4;
-    int n, i, j=0, k=0, b=0;
+    int n, j=0, k=0, b=0;
 
     int hora2 = 0, minutos = 0;
     separarHora(horaF2, hora2, minutos);
@@ -70,7 +70,7 @@ int cantidadPersonas(string horaF2) {
             switch (temp_ch)
             {
             case 'E':
-                if(esta = (false)) {
+                if( (esta = false) ) {
                     arrEnt[j] = temp3;
                     j++;
                     b++;
@@ -80,7 +80,7 @@ int cantidadPersonas(string horaF2) {
                 break;
             
             case 'S':
-                if(esta = (false)) {
+                if( (esta2 = false) ) {
                     arrSal[k] = temp3;
                     k++;
                     b--;

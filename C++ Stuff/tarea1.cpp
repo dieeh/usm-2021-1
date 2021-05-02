@@ -18,7 +18,7 @@ int salidas;
 
 //funcion separar hora
 void separarHora(string hora, int &hora2, int &minutos){
-    if (!hora.length() == 5) {
+    if (hora.length() != 5) {
         cout << "Error en el largo del string hora" << endl;
         exit(1);
     }
