@@ -1,0 +1,10 @@
+iPlanificación de Certámenes, semestre 2021-1
+
+Los Certámenes de la asignatura INF-134 Estructuras de Datos se realizarán en
+las siguientes fechas:
+
+* Certamen 1: 11/5, bloque 9-10
+
+* Certamen 2: 22/6, bloque 9-10
+
+* Certamen 3: 3/8, bloque 9-10
