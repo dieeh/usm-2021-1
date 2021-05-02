@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <sstream>
 
 using namespace std;
 
@@ -9,12 +8,6 @@ struct FlujoNeto {
 int hora;
 int minuto;
 int personas;
-};
-
-struct Empleado {
-string rut;
-int entradas;
-int salidas;
 };
 
 //funcion separar hora
@@ -49,7 +42,7 @@ int cantidadPersonas(string horaF2) {
     string arrEnt[n], arrSal[n];
 
     while (getline(fileEmp, s)) { 
-        int tempH, tempM, b;
+        int tempH, tempM;
         bool esta = false, esta2 = false;
         fileEmp >> temp2; //E
         char temp_ch = s[0];
