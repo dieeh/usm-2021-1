@@ -63,7 +63,7 @@ int cantidadPersonas(string horaF2) {
             switch (temp_ch)
             {
             case 'E':
-                if( (esta = false) ) {
+                if( (esta == false) ) {
                     arrEnt[j] = temp3;
                     j++;
                     b++;
@@ -73,7 +73,7 @@ int cantidadPersonas(string horaF2) {
                 break;
             
             case 'S':
-                if( (esta2 = false) ) {
+                if( (esta2 == false) ) {
                     arrSal[k] = temp3;
                     k++;
                     b--;
