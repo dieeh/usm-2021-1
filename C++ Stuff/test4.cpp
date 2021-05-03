@@ -23,13 +23,13 @@ void separarHora(string hora, int &hora2, int &minutos){
 
 
 //funcion principal
-int cantidadPersonas(string horaF2) { 
+int cantidadPersonas(string hora) { 
     fstream fileEmp, fileComp;
     string s, temp, temp2,temp3,temp4;
     int n, j=0, k=0, b=0;
 
     int hora2 = 0, minutos = 0;
-    separarHora(horaF2, hora2, minutos);
+    separarHora(hora, hora2, minutos);
        
     fileEmp.open("asistencia.txt", ios::in);
     if (!fileEmp.is_open()) {
@@ -59,7 +59,7 @@ int cantidadPersonas(string horaF2) {
             }
         }
         
-        if(tempH <= hora2 && tempM <= minutos) {
+        if( (tempH <= hora2) && (tempM <= minutos) ) {
             switch (temp_ch)
             {
             case 'E':
@@ -87,7 +87,11 @@ int cantidadPersonas(string horaF2) {
     fileEmp.close();
 
     fileComp.open("flujo-publico.dat", ios::binary);
-
+    if (!fileComp.is_open()) {
+        cout << "Error al abrir el archivo" << endl;
+        exit(1);
+    }
+    
     
     fileComp.close();
     return b;
