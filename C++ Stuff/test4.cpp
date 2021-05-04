@@ -21,6 +21,7 @@ void separarHora(string hora, int &hora2, int &minutos){
     minutos = stoi(hora.substr(3,2));
 }
 
+//funcion separarLineas
 void cantidadLineas(string path, int &n){
     fstream fileTemp;
     string temporal;
@@ -39,13 +40,13 @@ void cantidadLineas(string path, int &n){
 //funcion principal
 int cantidadPersonas(string hora) { 
     fstream fileEmp, fileComp;
-    string s, temp, temp2,temp3,temp4, ruta;
-    int n=0, j=0, k=0, b=0, z =0;
+    string lineaArch, temp2, tempRut, tempHora, ruta;
+    int n=0, j=0, k=0, ContadorEmpleados=0, z=0;
 
     int hora2 = 0, minutos = 0;
     separarHora(hora, hora2, minutos);
        
-    ruta = "C++ Stuff\\asistencia.txt";
+    ruta = "asistencia.txt";
     cantidadLineas(ruta, n);
     fileEmp.open(ruta, ios::in);
     if (!fileEmp.is_open()) {
@@ -53,23 +54,23 @@ int cantidadPersonas(string hora) {
         exit(1);
     }
     
-    string arrEnt[n], arrSal[n];
+    string ArregloEntradas[n], ArregloSalidas[n];
 
-    while (getline(fileEmp, s)) { 
+    while (getline(fileEmp, lineaArch)) { 
         int tempH, tempM;
         bool esta = false, esta2 = false;
-        temp2 = s[0]; //E
-        char temp_ch = s[0];
-        temp3 = s.substr(1,(s.length() - 8)); //rut
-        temp4 = s.substr(s.length() - 5, 5); //hora
-        separarHora(temp4, tempH, tempM);
+        temp2 = lineaArch[0]; //Entrada o Salida
+        char temp_ch = lineaArch[0];
+        tempRut = lineaArch.substr(1,(lineaArch.length() - 8)); //Rut
+        tempHora = lineaArch.substr(lineaArch.length() - 5, 5); //Hora
+        separarHora(tempHora, tempH, tempM);
         z = 0;
         for (z = 0; z < n; z++)
         {
-            if(temp3 == arrEnt[z]) {
+            if(tempRut == ArregloEntradas[z]) {
                 esta = (true);
             }
-            if(temp3 == arrSal[z]) {
+            if(tempRut == ArregloSalidas[z]) {
                 esta2 = (true);
             }
         }
@@ -79,9 +80,9 @@ int cantidadPersonas(string hora) {
             {
             case 'E':
                 if( (esta == false) ) {
-                    arrEnt[j] = temp3;
+                    ArregloEntradas[j] = tempRut;
                     j++;
-                    b++;
+                    ContadorEmpleados++;
                 }else {
                     continue;
                 }
@@ -89,9 +90,9 @@ int cantidadPersonas(string hora) {
             
             case 'S':
                 if( (esta2 == false) ) {
-                    arrSal[k] = temp3;
+                    ArregloSalidas[k] = tempRut;
                     k++;
-                    b--;
+                    ContadorEmpleados--;
                 }else {
                     continue;
                 }
@@ -101,15 +102,15 @@ int cantidadPersonas(string hora) {
     }
     fileEmp.close();
 
-    fileComp.open("C++ Stuff\\flujo-publico.dat", ios::binary);
-    if (!fileComp.is_open()) {
-        cout << "Error al abrir el archivo" << endl;
-        exit(1);
-    }
+    //fileComp.open("C++ Stuff\\flujo-publico.dat", ios::binary);
+    //if (!fileComp.is_open()) {
+    //    cout << "Error al abrir el archivo" << endl;
+    //    exit(1);
+    //}
     
     
-    fileComp.close();
-    return b;
+    //fileComp.close();
+    return ContadorEmpleados;
 }
 
 
