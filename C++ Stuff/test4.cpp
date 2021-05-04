@@ -21,35 +21,50 @@ void separarHora(string hora, int &hora2, int &minutos){
     minutos = stoi(hora.substr(3,2));
 }
 
+void cantidadLineas(string path, int &n){
+    fstream fileTemp;
+    string temporal;
+    fileTemp.open(path, ios::in);
+    if (!fileTemp.is_open()) {
+        cout << "Error al abrir el archivo" << endl;
+        exit(1);
+    }
+    while(getline(fileTemp, temporal)) {
+        n++;
+    }
+    fileTemp.close();
+}
+
 
 //funcion principal
 int cantidadPersonas(string hora) { 
     fstream fileEmp, fileComp;
-    string s, temp, temp2,temp3,temp4;
-    int n, j=0, k=0, b=0;
+    string s, temp, temp2,temp3,temp4, ruta;
+    int n=0, j=0, k=0, b=0, z =0;
 
     int hora2 = 0, minutos = 0;
     separarHora(hora, hora2, minutos);
        
-    fileEmp.open("asistencia.txt", ios::in);
+    ruta = "C++ Stuff\\asistencia.txt";
+    cantidadLineas(ruta, n);
+    fileEmp.open(ruta, ios::in);
     if (!fileEmp.is_open()) {
         cout << "Error al abrir el archivo" << endl;
         exit(1);
     }
-    while(getline(fileEmp, temp)) {
-        n++;
-    }
+    
     string arrEnt[n], arrSal[n];
 
     while (getline(fileEmp, s)) { 
         int tempH, tempM;
         bool esta = false, esta2 = false;
-        fileEmp >> temp2; //E
+        temp2 = s[0]; //E
         char temp_ch = s[0];
-        fileEmp >> temp3; //rut
-        fileEmp >> temp4; //hora
+        temp3 = s.substr(1,(s.length() - 8)); //rut
+        temp4 = s.substr(s.length() - 5, 5); //hora
         separarHora(temp4, tempH, tempM);
-        for (int z = 0; z < n; z++)
+        z = 0;
+        for (z = 0; z < n; z++)
         {
             if(temp3 == arrEnt[z]) {
                 esta = (true);
@@ -86,7 +101,7 @@ int cantidadPersonas(string hora) {
     }
     fileEmp.close();
 
-    fileComp.open("flujo-publico.dat", ios::binary);
+    fileComp.open("C++ Stuff\\flujo-publico.dat", ios::binary);
     if (!fileComp.is_open()) {
         cout << "Error al abrir el archivo" << endl;
         exit(1);
