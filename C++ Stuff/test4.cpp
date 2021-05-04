@@ -107,8 +107,8 @@ int cantidadPersonas(string hora) {
 
 //main
 int main()  {
-    string hora;
-    cin >> hora;
+    string hora = "12:30";
+    // cin >> hora;
     cout << cantidadPersonas(hora) << endl;
 
     return 0;
