@@ -46,7 +46,7 @@ int cantidadPersonas(string hora) {
     int hora2 = 0, minutos = 0;
     separarHora(hora, hora2, minutos);
        
-    ruta = "C++ Stuff\\asistencia.txt";
+    ruta = "asistencia.txt";
     cantidadLineas(ruta, n);
     fileEmp.open(ruta, ios::in);
     if (!fileEmp.is_open()) {
@@ -102,8 +102,8 @@ int cantidadPersonas(string hora) {
     }
     fileEmp.close();
 
-    ruta2 = "C++ Stuff\\flujo-publico.dat";
-    fileComp.open(ruta2, ios::binary);
+    ruta2 = "flujo-publico2.dat";
+    fileComp.open(ruta2, ios::in|ios::binary);
     FlujoNeto fn;
     if (!fileComp.is_open()) {
         cout << "Error al abrir el archivo 3" << endl;
@@ -120,7 +120,7 @@ int cantidadPersonas(string hora) {
 //No sabemos usar GitHub :'c
 //main
 int main()  {
-    string hora = "12:30";
+    string hora = "15:57";
     // cin >> hora;
     cout << cantidadPersonas(hora) << endl;
 
