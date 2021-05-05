@@ -102,7 +102,7 @@ int cantidadPersonas(string hora) {
     }
     fileEmp.close();
 
-    ruta2 = "flujo-publico2.dat";
+    ruta2 = "flujo-publico.dat";
     fileComp.open(ruta2, ios::in|ios::binary);
     
     if (!fileComp.is_open()) {

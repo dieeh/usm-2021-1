@@ -1,5 +1,6 @@
 class A {
 private:
+    unsigned long tamaño;
     
 public:
     A();
