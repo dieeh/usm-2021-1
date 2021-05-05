@@ -27,7 +27,7 @@ void cantidadLineas(string path, int &n){
     string temporal;
     fileTemp.open(path, ios::in);
     if (!fileTemp.is_open()) {
-        cout << "Error al abrir el archivo 1 " << endl;
+        cout << "Error al abrir el archivo '" << path << "'" << endl;
         exit(1);
     }
     while(getline(fileTemp, temporal)) {
@@ -50,7 +50,7 @@ int cantidadPersonas(string hora) {
     cantidadLineas(ruta, n);
     fileEmp.open(ruta, ios::in);
     if (!fileEmp.is_open()) {
-        cout << "Error al abrir el archivo 2" << endl;
+        cout << "Error al abrir el archivo '" << ruta << "'" << endl;
         exit(1);
     }
     
@@ -104,24 +104,28 @@ int cantidadPersonas(string hora) {
 
     ruta2 = "flujo-publico2.dat";
     fileComp.open(ruta2, ios::in|ios::binary);
-    FlujoNeto fn;
+    
     if (!fileComp.is_open()) {
-        cout << "Error al abrir el archivo 3" << endl;
+        cout << "Error al abrir el archivo '" << ruta2 << "'" << endl;
         exit(1);
-    while(fileComp.read((char*)&fn, sizeof(FlujoNeto)))
+    }
+
+    FlujoNeto fn;
+    while (fileComp.read((char*)&fn, sizeof(FlujoNeto)))
         if((fn.hora <= hora2) && (fn.minuto <= minutos)){
             ContadorPersonas += fn.personas;
         }
     fileComp.close();    
-    }
+    
     
     return (ContadorEmpleados + ContadorPersonas);
 }
-//No sabemos usar GitHub :'c
+
+
 //main
 int main()  {
-    string hora = "15:57";
-    // cin >> hora;
+    string hora;
+    cin >> hora;
     cout << cantidadPersonas(hora) << endl;
 
     return 0;
