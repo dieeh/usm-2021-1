@@ -36,6 +36,37 @@ void separarHora(string hora, int &hora2, int &minutos) {
     minutos = stoi(hora.substr(3,2));
 }
 
+
+/*****
+ *  bool compararHoras
+ *****
+ *  Esta funcion compara 2 horas en el formato hora1:minuto1 y 
+ *  hora2:minuto2, y retorna true o false dependiendo si hora1:minuto1 
+ *  es mayor, menor o igual que hora2:minuto2.
+ *****
+ *  Input:
+ *      int hora1 : Un int que contiene la hora en un formato de 0 a 23.
+ *      int minuto1 : Un int que contiene los minutos en un formato de 0 a 59.
+ *      int hora2 : Un int que contiene la hora en un formato de 0 a 23.
+ *      int minuto2 : Un int que contiene los minutos en un formato de 0 a 59.
+ *****
+ *  Returns:
+ *      bool, retorna 'true' si hora1:minuto1 es menor o igual que hora2:minuto2,
+ *      y retorna 'false' si hora1:minuto1 es mayor que hora2:minuto2
+*****/
+ 
+bool compararHoras(int hora1, int minuto1, int hora2, int minuto2) {
+    if ( hora2 > hora1) {
+        return true;
+    }
+    if ((hora2 == hora1) && (minuto2 >= minuto1)) {
+        return true;
+    }else{
+        return false;
+    }
+}
+
+
 /*****
  *  void cantidadLineas
  *****
@@ -83,6 +114,12 @@ int cantidadPersonas(string hora) {
 
     int hora2 = 0, minutos = 0;
     separarHora(hora, hora2, minutos);
+    if ( (0 > hora2 > 23) || (0 > minutos > 59) )
+    {
+        cout << "Error en la hora ingresada" << endl;
+        exit(1);
+    }
+    
        
     ruta = "asistencia.txt";
     cantidadLineas(ruta, n);
@@ -112,7 +149,7 @@ int cantidadPersonas(string hora) {
             }
         }
         
-        if( (tempH <= hora2) && (tempM <= minutos) ) {
+        if( (compararHoras(tempH, tempM, hora2, minutos) == true) ) {
             switch (temp_ch) {
             case 'E': //Entrada
                 if( (esta == false) ) {
@@ -167,7 +204,7 @@ int cantidadPersonas(string hora) {
 
     FlujoNeto fn;
     while (fileComp.read((char*)&fn, sizeof(FlujoNeto)))
-        if((fn.hora <= hora2) && (fn.minuto <= minutos)){
+        if( (compararHoras(fn.hora, fn.minuto, hora2, minutos) == true) ){
             ContadorPersonas += fn.personas;
         }
     fileComp.close();    
