@@ -99,7 +99,8 @@ int cantidadPersonas(string hora) {
         }
         int contador1 = 0, contador2 = 0;
         
-        if ( (salida == true)) {
+        //Borrado de elementos de los arrays de entrada y salida
+        if ( (salida == true)) {  
             for (contador1 = 0; contador1 < n; contador1++) {
             for (contador2 = 0; contador2 < n; contador2++) {
                 if ( ArregloSalidas[contador1] == ArregloEntradas[contador2] ) {
@@ -110,10 +111,8 @@ int cantidadPersonas(string hora) {
             }
         }
         }
-        
-        
-
     }
+
     fileEmp.close();
 
     ruta2 = "flujo-publico.dat";
