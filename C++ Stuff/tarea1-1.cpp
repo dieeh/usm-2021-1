@@ -10,7 +10,22 @@ int minuto;
 int personas;
 };
 
-//Funcion separarHora
+/*****
+ *  void separarHora
+ *****
+ *  Esta funcion separa un string con una hora en formato hh:mm 
+ *  y lo transforma en 2 int que contienen la hora y los minutos,
+ *  los cuales se actualizan fuera de la funcion puesto que son parametros
+ *  por referencia.
+ *****
+ *  Input:
+ *      string hora : Un string de 5 caracteres que contiene una hora en formato hh:mm
+ *      int hora2 : Un int que se pasa por referencia a la funcion, que tendra la hora del string
+ *      int minutos : Un int que se pasa por referencia a la funcion, que tendra los minutos del string
+ *****
+ *  Returns:
+ *      void, no retorna nada, puesto que solo actualiza los parametros que se le entregan por referencia.
+ *****/
 void separarHora(string hora, int &hora2, int &minutos) {
     if (hora.length() != 5) {
         cout << "Error en el largo del string hora" << endl;
@@ -21,10 +36,22 @@ void separarHora(string hora, int &hora2, int &minutos) {
     minutos = stoi(hora.substr(3,2));
 }
 
-//Funcion separarLineas
+/*****
+ *  void cantidadLineas
+ *****
+ *  Esta funcion cuenta la cantidad de lineas que tiene un archivo ASCII.
+ *****
+ *  Input:
+ *      string path : Un string que contiene la ruta al archivo ASCII que se deba leer.
+ *      int n : Un int que se pasa por referencia a la funcion, que tendra la cantidad de lineas del archivo.
+ *****
+ *  Returns:
+ *      void, no retorna nada, puesto que solo actualiza los parametros que se le entregan por referencia.
+ *****/
 void cantidadLineas(string path, int &n) {
     fstream fileTemp;
     string temporal;
+    n = 0;
     fileTemp.open(path, ios::in);
     if (!fileTemp.is_open()) {
         cout << "Error al abrir el archivo '" << path << "'" << endl;
@@ -37,7 +64,18 @@ void cantidadLineas(string path, int &n) {
 }
 
 
-//Funcion principal
+/*****
+ *  int cantidadPersonas
+ *****
+ *  Esta funcion cuenta la cantidad de personas que se encuentra en el supermercado leyendo
+ *  los archivos 'asistencia.txt' y 'flujo-publico.dat'.
+ *****
+ *  Input:
+ *      string hora : Un string de 5 caracteres que contiene una hora en formato hh:mm
+ *****
+ *  Returns:
+ *      int, retorna la suma de las variables locales ContadorEmpleados y ContadorPersonas.
+ *****/
 int cantidadPersonas(string hora) { 
     fstream fileEmp, fileComp;
     string lineaArch, tempRut, tempHora, ruta, ruta2;
@@ -54,7 +92,8 @@ int cantidadPersonas(string hora) {
         exit(1);
     }
     
-    string ArregloEntradas[n], ArregloSalidas[n];
+    string* ArregloEntradas = new string[n];
+    string* ArregloSalidas = new string[n];
 
     while (getline(fileEmp, lineaArch)) { 
         int tempH, tempM;
@@ -114,6 +153,8 @@ int cantidadPersonas(string hora) {
         }
     }
 
+    delete[] ArregloEntradas;
+    delete[] ArregloSalidas;
     fileEmp.close();
 
     ruta2 = "flujo-publico.dat";
