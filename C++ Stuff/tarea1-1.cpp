@@ -10,8 +10,8 @@ int minuto;
 int personas;
 };
 
-//funcion separar hora
-void separarHora(string hora, int &hora2, int &minutos){
+//Funcion separarHora
+void separarHora(string hora, int &hora2, int &minutos) {
     if (hora.length() != 5) {
         cout << "Error en el largo del string hora" << endl;
         exit(1);
@@ -21,8 +21,8 @@ void separarHora(string hora, int &hora2, int &minutos){
     minutos = stoi(hora.substr(3,2));
 }
 
-//funcion separarLineas
-void cantidadLineas(string path, int &n){
+//Funcion separarLineas
+void cantidadLineas(string path, int &n) {
     fstream fileTemp;
     string temporal;
     fileTemp.open(path, ios::in);
@@ -37,11 +37,11 @@ void cantidadLineas(string path, int &n){
 }
 
 
-//funcion principal
+//Funcion principal
 int cantidadPersonas(string hora) { 
     fstream fileEmp, fileComp;
-    string lineaArch, temp2, tempRut, tempHora, ruta, ruta2;
-    int n=0, j=0, k=0, ContadorEmpleados=0, ContadorPersonas=0, z=0;
+    string lineaArch, tempRut, tempHora, ruta, ruta2;
+    int n=0, j=0, k=0, z=0, ContadorEmpleados=0, ContadorPersonas=0;
 
     int hora2 = 0, minutos = 0;
     separarHora(hora, hora2, minutos);
@@ -58,15 +58,13 @@ int cantidadPersonas(string hora) {
 
     while (getline(fileEmp, lineaArch)) { 
         int tempH, tempM;
-        bool esta = false, esta2 = false;
-        temp2 = lineaArch[0]; //Entrada o Salida
-        char temp_ch = lineaArch[0];
+        bool esta = false, esta2 = false, salida= false;
+        char temp_ch = lineaArch[0]; //Entrada o Salida
         tempRut = lineaArch.substr(1,(lineaArch.length() - 8)); //Rut
         tempHora = lineaArch.substr(lineaArch.length() - 5, 5); //Hora
         separarHora(tempHora, tempH, tempM);
         z = 0;
-        for (z = 0; z < n; z++)
-        {
+        for (z = 0; z < n; z++) {
             if(tempRut == ArregloEntradas[z]) {
                 esta = (true);
             }
@@ -76,9 +74,8 @@ int cantidadPersonas(string hora) {
         }
         
         if( (tempH <= hora2) && (tempM <= minutos) ) {
-            switch (temp_ch)
-            {
-            case 'E':
+            switch (temp_ch) {
+            case 'E': //Entrada
                 if( (esta == false) ) {
                     ArregloEntradas[j] = tempRut;
                     j++;
@@ -88,17 +85,34 @@ int cantidadPersonas(string hora) {
                 }
                 break;
             
-            case 'S':
+            case 'S': //Salida
                 if( (esta2 == false) ) {
                     ArregloSalidas[k] = tempRut;
                     k++;
                     ContadorEmpleados--;
+                    salida = true;
                 }else {
                     continue;
                 }
                 break;
             }
         }
+        int contador1 = 0, contador2 = 0;
+        
+        if ( (salida == true)) {
+            for (contador1 = 0; contador1 < n; contador1++) {
+            for (contador2 = 0; contador2 < n; contador2++) {
+                if ( ArregloSalidas[contador1] == ArregloEntradas[contador2] ) {
+                    ArregloEntradas[contador2] = "0";
+                    ArregloSalidas[contador1] = "0";
+                    salida = false;
+                }   
+            }
+        }
+        }
+        
+        
+
     }
     fileEmp.close();
 
@@ -122,7 +136,6 @@ int cantidadPersonas(string hora) {
 }
 
 
-//main
 int main()  {
     string hora;
     cin >> hora;
