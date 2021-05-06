@@ -60,7 +60,7 @@ int cantidadPersonas(string hora) {
         int tempH, tempM;
         bool esta = false, esta2 = false, salida= false;
         char temp_ch = lineaArch[0]; //Entrada o Salida
-        tempRut = lineaArch.substr(1,(lineaArch.length() - 8)); //Rut
+        tempRut = lineaArch.substr(1,(lineaArch.length() - 7)); //Rut
         tempHora = lineaArch.substr(lineaArch.length() - 5, 5); //Hora
         separarHora(tempHora, tempH, tempM);
         z = 0;
@@ -101,12 +101,13 @@ int cantidadPersonas(string hora) {
         
         //Borrado de elementos de los arrays de entrada y salida
         if ( (salida == true)) {  
-            for (contador1 = 0; contador1 < n; contador1++) {
-            for (contador2 = 0; contador2 < n; contador2++) {
+            for (contador1 = 0; contador1 < k; contador1++) {
+            for (contador2 = 0; contador2 < j; contador2++) {
                 if ( ArregloSalidas[contador1] == ArregloEntradas[contador2] ) {
-                    ArregloEntradas[contador2] = "0";
-                    ArregloSalidas[contador1] = "0";
+                    ArregloEntradas[contador2] = "a";
+                    ArregloSalidas[contador1] = "b";
                     salida = false;
+                    break;
                 }   
             }
         }
