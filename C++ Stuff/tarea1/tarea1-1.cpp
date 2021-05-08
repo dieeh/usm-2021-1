@@ -28,7 +28,7 @@ int personas;
  *****/
 void separarHora(string hora, int &hora2, int &minutos) {
     if (hora.length() != 5) {
-        cout << "Error en el largo del string hora" << endl;
+        cerr << "Error en el largo del string hora" << endl;
         exit(1);
     }
     
@@ -84,7 +84,7 @@ void cantidadLineas(string path, int &n) {
     n = 0;
     fileTemp.open(path, ios::in);
     if (!fileTemp.is_open()) {
-        cout << "Error al abrir el archivo '" << path << "'" << endl;
+        cerr << "Error al abrir el archivo '" << path << "'" << endl;
         exit(1);
     }
     while(getline(fileTemp, temporal)) {
@@ -115,7 +115,7 @@ int cantidadPersonas(string hora) {
     separarHora(hora, hora2, minutos);
     if ( (0 > hora2 > 23) || (0 > minutos > 59) )
     {
-        cout << "Error en la hora ingresada" << endl;
+        cerr << "Error en la hora ingresada" << endl;
         exit(1);
     }
     
@@ -124,7 +124,7 @@ int cantidadPersonas(string hora) {
     cantidadLineas(ruta, n);
     fileEmp.open(ruta, ios::in);
     if (!fileEmp.is_open()) {
-        cout << "Error al abrir el archivo '" << ruta << "'" << endl;
+        cerr << "Error al abrir el archivo '" << ruta << "'" << endl;
         exit(1);
     }
     
@@ -197,7 +197,7 @@ int cantidadPersonas(string hora) {
     fileComp.open(ruta2, ios::in|ios::binary);
     
     if (!fileComp.is_open()) {
-        cout << "Error al abrir el archivo '" << ruta2 << "'" << endl;
+        cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
         exit(1);
     }
 

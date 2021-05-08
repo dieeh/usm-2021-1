@@ -1,7 +1,12 @@
+#include <cmath>
+
 class arr_extensible {
 private:
+    int k, contador;
     unsigned long tamaño;
     int* Arr = new int[tamaño];
+    
+
     
 public:
     arr_extensible();
@@ -12,8 +17,10 @@ public:
 
     arr_extensible(unsigned long n, int v){
         tamaño = n;
+        contador = tamaño;
         for (int i = 0; i < n; i++) {
             Arr[i] = v;
+            
         }
     };
 
@@ -41,9 +48,13 @@ public:
         }
     };
 
-    void append(int v);
+    void append(int v){
+        contador +=1;
+    };
 
-    void remove();
+    void remove(){
+        tamaño -=1;
+    };
 
     unsigned long size();
 };
