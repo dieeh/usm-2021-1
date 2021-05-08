@@ -1,19 +1,45 @@
-class A {
+class arr_extensible {
 private:
     unsigned long tamaño;
+    int* Arr = new int[tamaño];
     
 public:
-    A();
+    arr_extensible();
 
-    A(unsigned long n);
+    arr_extensible(unsigned long n){
+        tamaño = n;
+    };
 
-    A(unsigned long n);
+    arr_extensible(unsigned long n, int v){
+        tamaño = n;
+        for (int i = 0; i < n; i++) {
+            Arr[i] = v;
+        }
+    };
 
-    ~A();
+    ~arr_extensible(){
+        delete[] Arr;
+    };
 
-    bool setValue(unsigned long i, int v);
+    bool setValue(unsigned long i, int v){
+        if ( (0<=i < tamaño)) {
+            Arr[i] = v;
+            return true;
+        }
+        if ( (i >= tamaño) ) {
+            return false;
+        }
+    };
 
-    int getValue(unsigned long i);
+    int getValue(unsigned long i){
+        if ( (0<=i < tamaño)) {
+            return Arr[i];
+        }
+        if ( (i >= tamaño) ) {
+            cerr << "Error de acceso al arreglo" << endl;
+            exit(1);
+        }
+    };
 
     void append(int v);
 

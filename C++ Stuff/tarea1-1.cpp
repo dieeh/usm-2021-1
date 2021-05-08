@@ -54,7 +54,6 @@ void separarHora(string hora, int &hora2, int &minutos) {
  *      bool, retorna 'true' si hora1:minuto1 es menor o igual que hora2:minuto2,
  *      y retorna 'false' si hora1:minuto1 es mayor que hora2:minuto2
 *****/
- 
 bool compararHoras(int hora1, int minuto1, int hora2, int minuto2) {
     if ( hora2 > hora1) {
         return true;
