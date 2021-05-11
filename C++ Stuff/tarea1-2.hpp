@@ -2,11 +2,10 @@
 
 class arr_extensible {
 private:
-    int k, contador;
+    int k;
     unsigned long tamaño;
     int* Arr = new int[tamaño];
     
-
     
 public:
     arr_extensible();
@@ -17,7 +16,6 @@ public:
 
     arr_extensible(unsigned long n, int v){
         tamaño = n;
-        contador = tamaño;
         for (int i = 0; i < n; i++) {
             Arr[i] = v;
             
@@ -49,14 +47,32 @@ public:
     };
 
     void append(int v){
-        contador +=1;
+        k=0;
+        while ( ((unsigned long) pow(2,k)) < tamaño ) {
+            k++;
+        }
+        int l = pow(2,k);
+        int* Btemp = new int[l];
+        for (int i = 0; i < tamaño; i++) {
+            Btemp[i] = Arr[i];
+        }
+        delete[] Arr;
+        int* Arr = new int[tamaño];
+        for (int j = 0; j < tamaño; j++)
+        {
+            Arr[j] = Btemp[j];
+        }
+        delete[] Btemp;
+        
     };
 
     void remove(){
-        tamaño -=1;
+        
     };
 
-    unsigned long size();
+    unsigned long size(){
+        
+    };
 };
 
 
