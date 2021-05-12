@@ -16,8 +16,7 @@ struct vendedor {
     int n_ventas;
 };
 
-vendedor* vendeProducto(string FileName, int cod, int k, int &sizeArr) 
-{
+vendedor* vendeProducto(string FileName, int cod, int k, int &sizeArr) {
     fstream fp;
     int a, s = 0;
     vendedor* Vendedores;
