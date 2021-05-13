@@ -1,10 +1,15 @@
+#include <iostream>
+#include <string>
 #include <cmath>
+
+using namespace std;
+
 
 class arr_extensible {
 private:
     int k;
     unsigned long tamaño;
-    int* Arr = new int[tamaño];
+    int* B = new int[tamaño];
     
     
 public:
@@ -17,18 +22,18 @@ public:
     arr_extensible(unsigned long n, int v){
         tamaño = n;
         for (int i = 0; i < n; i++) {
-            Arr[i] = v;
+            B[i] = v;
             
         }
     };
 
     ~arr_extensible(){
-        delete[] Arr;
+        delete[] B;
     };
 
     bool setValue(unsigned long i, int v){
         if ( (0<=i < tamaño)) {
-            Arr[i] = v;
+            B[i] = v;
             return true;
         }
         if ( (i >= tamaño) ) {
@@ -38,7 +43,7 @@ public:
 
     int getValue(unsigned long i){
         if ( (0<=i < tamaño)) {
-            return Arr[i];
+            return B[i];
         }
         if ( (i >= tamaño) ) {
             cerr << "Error de acceso al arreglo" << endl;
@@ -54,13 +59,12 @@ public:
         int l = pow(2,k);
         int* Btemp = new int[l];
         for (int i = 0; i < tamaño; i++) {
-            Btemp[i] = Arr[i];
+            Btemp[i] = B[i];
         }
-        delete[] Arr;
-        int* Arr = new int[tamaño];
-        for (int j = 0; j < tamaño; j++)
-        {
-            Arr[j] = Btemp[j];
+        delete[] B;
+        int* B = new int[tamaño];
+        for (int j = 0; j < tamaño; j++) {
+            B[j] = Btemp[j];
         }
         delete[] Btemp;
         
