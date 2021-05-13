@@ -7,7 +7,7 @@ int main() {
     arr_extensible arreglo;
     arreglo.setValue(0, 23);
     arreglo.append(32);
-    cout << arreglo.getValue(2) << endl;
+    cout << "getValue =" << arreglo.getValue(2) << endl;
     arreglo.arrayCheck();
     
     

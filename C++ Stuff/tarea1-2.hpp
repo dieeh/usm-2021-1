@@ -61,21 +61,21 @@ public:
     void append(int v){
         int p = tamano + 1;
         while ( ((unsigned long) sizeB) < p ) {
-            sizeB = pow(2, k);
             k++;
+            sizeB = pow(2, k);
         }
-        int l = sizeB;
-        int* Btemp = new int[l];
+        int* Btemp = new int[sizeB];
         for (unsigned long i = 0; i < tamano; i++) {
             Btemp[i] = B[i];
         }
         delete[] B;
-        B = new int[tamano];
-        for (unsigned long j = 0; j < tamano; j++) {
+        B = new int[sizeB];
+        for (unsigned long j = 0; j < sizeB; j++) {
             B[j] = Btemp[j];
         }
         delete[] Btemp;
         B[tamano] = v;
+        tamano++;
     };
 
     void remove(){
@@ -88,7 +88,7 @@ public:
 
     void arrayCheck(){
         for (int i = 0; i < sizeB; i++) {
-            cout << B[i] << endl;
+            cout << "Arreglo B en la posicion " << i << ":" << B[i] << endl;
         }
         
     };
