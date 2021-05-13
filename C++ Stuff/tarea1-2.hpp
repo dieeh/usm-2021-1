@@ -59,7 +59,9 @@ public:
     };
 
     void append(int v){
-        while ( ((unsigned long) sizeB) < (tamano + 1) ) {
+        int p = tamano + 1;
+        while ( ((unsigned long) sizeB) < p ) {
+            sizeB = pow(2, k);
             k++;
         }
         int l = sizeB;
@@ -81,7 +83,7 @@ public:
     };
 
     unsigned long size(){
-        
+        return tamano;
     };
 
     void arrayCheck(){
