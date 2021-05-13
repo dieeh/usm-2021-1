@@ -1,7 +1,7 @@
 # usm-2021-1
 
--Arregle la funcion separarHora  
--Ya no tira warnings al compilar
+-Falta la actividad 2  
+-La 1 ta ready  
+-Hay que completar el nombres.txt 
+-Terminar antes del viernes
 
--Falta añadir la 2da parte de la funcion (binario)  
--De aqui al miercoles deberia estar listo
