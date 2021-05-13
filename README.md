@@ -2,6 +2,6 @@
 
 -Falta la actividad 2  
 -La 1 ta ready  
--Hay que completar el nombres.txt 
+-Hay que completar el nombres.txt  
 -Terminar antes del viernes
 

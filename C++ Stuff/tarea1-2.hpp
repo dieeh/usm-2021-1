@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <cmath>
 
 using namespace std;
@@ -8,66 +7,73 @@ using namespace std;
 class arr_extensible {
 private:
     int k;
-    unsigned long tamaño;
-    int* B = new int[tamaño];
+    int sizeB;
+    unsigned long tamano;
+    int* B;
     
     
 public:
-    arr_extensible();
+    arr_extensible(){
+        k = 1;
+        sizeB = pow(2, k);
+        tamano = sizeB;
+        B = new int[tamano];
+    };
 
     arr_extensible(unsigned long n){
-        tamaño = n;
+        tamano = n;
+        B = new int[tamano];
     };
 
     arr_extensible(unsigned long n, int v){
-        tamaño = n;
-        for (int i = 0; i < n; i++) {
+        tamano = n;
+        B = new int[tamano];
+        for (unsigned long i = 0; i < n; i++) {
             B[i] = v;
             
         }
     };
 
     ~arr_extensible(){
-        delete[] B;
+        delete []B;
     };
 
     bool setValue(unsigned long i, int v){
-        if ( (0<=i < tamaño)) {
+        if ( (i < tamano)) {
             B[i] = v;
             return true;
         }
-        if ( (i >= tamaño) ) {
+        if ( (i >= tamano) ) {
             return false;
         }
     };
 
     int getValue(unsigned long i){
-        if ( (0<=i < tamaño)) {
+        if ( (i < tamano)) {
             return B[i];
         }
-        if ( (i >= tamaño) ) {
+        if ( (i >= tamano) ) {
             cerr << "Error de acceso al arreglo" << endl;
             exit(1);
         }
     };
 
     void append(int v){
-        k=0;
-        while ( ((unsigned long) pow(2,k)) < tamaño ) {
+        while ( ((unsigned long) sizeB) < (tamano + 1) ) {
             k++;
         }
-        int l = pow(2,k);
+        int l = sizeB;
         int* Btemp = new int[l];
-        for (int i = 0; i < tamaño; i++) {
+        for (unsigned long i = 0; i < tamano; i++) {
             Btemp[i] = B[i];
         }
         delete[] B;
-        int* B = new int[tamaño];
-        for (int j = 0; j < tamaño; j++) {
+        B = new int[tamano];
+        for (unsigned long j = 0; j < tamano; j++) {
             B[j] = Btemp[j];
         }
         delete[] Btemp;
-        
+        B[tamano] = v;
     };
 
     void remove(){
@@ -75,6 +81,13 @@ public:
     };
 
     unsigned long size(){
+        
+    };
+
+    void arrayCheck(){
+        for (int i = 0; i < sizeB; i++) {
+            cout << B[i] << endl;
+        }
         
     };
 };
