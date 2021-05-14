@@ -14,9 +14,9 @@ private:
     
 public:
     arr_extensible(){
-        k = 1;
+        k = 0;
         sizeB = pow(2, k);
-        tamano = sizeB;
+        tamano = 0;
         B = new int[tamano];
     }
 
@@ -25,7 +25,7 @@ public:
         sizeB = tamano;
         B = new int[tamano];
 
-        k = 1;
+        k = 0;
         while ( (pow(2,k) < tamano) ) {
             k++;
         }
@@ -39,7 +39,7 @@ public:
         for (unsigned long i = 0; i < n; i++) {
             B[i] = v;
         }
-        k = 1;
+        k = 0;
         while ( (pow(2,k) < tamano) ) {
             k++;
         }
@@ -70,8 +70,7 @@ public:
     }
 
     void append(int v){
-        int p = tamano + 1;
-        while ( ((unsigned long) sizeB) < p ) {
+        while ( sizeB < (tamano + 1) ) {
             k++;
             sizeB = pow(2, k);
         }
@@ -113,13 +112,13 @@ public:
         return tamano;
     }
 
-    /*****
-     * Funcion de testeo de array, no considerar.
-    void arrayCheck(){
-        for (int i = 0; i < sizeB; i++) {
-            cout << "Arreglo B en la posicion " << i << ":" << B[i] << endl;
-        }
-        cout << sizeB << endl;
-    }
-    *****/
+    
+ /// Funcion de testeo de array, no considerar.
+ ///    void arrayCheck(){
+ ///        for (int i = 0; i < sizeB; i++) {
+ ///            cout << "Arreglo B en la posicion " << i << ":" << B[i] << endl;
+ ///        }
+ ///        cout << sizeB << endl;
+ ///    }
+    
 };
