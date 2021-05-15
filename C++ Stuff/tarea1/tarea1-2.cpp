@@ -8,21 +8,17 @@ int main() {
     //Este main tiene el unico proposito de usarlo para testear la class,
     //y usar breakpoints para ver como funcionan los metodos
 
-    char letra = 'A';
+    char letra;
     cout << "Caso A, B o C: " << endl;
-    //cin >> letra;
+    cin >> letra;
 
     if (letra == 'A'){
         arr_extensible arreglo;
-        arreglo.arrayCheck();
         arreglo.setValue(0, 3);
-        arreglo.arrayCheck();
         //arreglo.getValue(0);
         arreglo.append(67);
         arreglo.append(67);
-        arreglo.arrayCheck();
         arreglo.remove();
-        arreglo.arrayCheck();
         arreglo.size();
         arreglo.~arr_extensible();
         
@@ -31,16 +27,15 @@ int main() {
         arreglo.setValue(0, 3);
         arreglo.getValue(0);
         arreglo.append(67);
-        arreglo.arrayCheck();
         arreglo.remove();
         arreglo.size();
         arreglo.~arr_extensible();
+
     }else if (letra == 'C'){
         arr_extensible arreglo(10, 134);
         arreglo.setValue(0, 3);
         arreglo.getValue(0);
         arreglo.append(67);
-        arreglo.arrayCheck();
         arreglo.remove();
         arreglo.size();
         arreglo.~arr_extensible();
