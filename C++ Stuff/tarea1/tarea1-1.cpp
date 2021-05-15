@@ -113,7 +113,7 @@ int cantidadPersonas(string hora) {
 
     int hora2 = 0, minutos = 0;
     separarHora(hora, hora2, minutos);
-    if ( (0 > hora2 > 23) || (0 > minutos > 59) )
+    if ( ((0 > hora2) || (hora2 > 23)) || ((0 > minutos) || (minutos > 59)) )
     {
         cerr << "Error en la hora ingresada" << endl;
         exit(1);
@@ -217,6 +217,13 @@ int main()  {
     string hora;
     cin >> hora;
     cout << cantidadPersonas(hora) << endl;
+
+    string test[18] = {"08:00", "08:04", "08:30", "09:00", "10:00", "12:00", "12:15", "12:16", "12:30", "13:30", "14:30", "15:50", "16:00", "17:10", "17:15", "18:00", "18:15", "20:00"};
+    for (int i = 0; i < 18; i++)
+    {
+        cout << test[i] << ": " << cantidadPersonas(test[i]) << endl;
+    }
+    
 
     return 0;
 }
