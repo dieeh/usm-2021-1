@@ -69,8 +69,7 @@ public:
         if ((i < tamano)) {
             B[i] = v;
             return true;
-        }
-        if ( (i >= tamano) ) {
+        }else{
             return false;
         }
     }
@@ -91,12 +90,11 @@ public:
     *      fuera del rango del arreglo, este retornará error.
     *****/
     int getValue(unsigned long i){
-        if ((i < tamano)) {
-            return B[i];
-        }
         if ( (i >= tamano) ) {
             cerr << "Error de acceso al arreglo" << endl;
             exit(1);
+        }else{
+            return B[i];
         }
     }
 
