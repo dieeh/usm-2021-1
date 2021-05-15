@@ -19,14 +19,18 @@ int main() {
         arreglo.setValue(0, 3);
         arreglo.arrayCheck();
         arreglo.getValue(0);
+        arreglo.remove();
+        cout << "remove" << endl;
+        arreglo.arrayCheck();
         arreglo.append(67);
         arreglo.arrayCheck();
-        arreglo.remove();
+        arreglo.append(67);
+        arreglo.arrayCheck();
+        arreglo.append(67);
+        arreglo.arrayCheck();
         arreglo.size();
         arreglo.~arr_extensible();
-    }
-    
-    if (letra == 'B'){
+    }else if (letra == 'B'){
         arr_extensible arreglo(17);
         arreglo.setValue(17, 3);
         arreglo.getValue(0);
@@ -35,9 +39,7 @@ int main() {
         arreglo.remove();
         arreglo.size();
         arreglo.~arr_extensible();
-    }
-
-    if (letra == 'C'){
+    }else if (letra == 'C'){
         arr_extensible arreglo(10, 134);
         arreglo.setValue(0, 3);
         arreglo.getValue(0);
