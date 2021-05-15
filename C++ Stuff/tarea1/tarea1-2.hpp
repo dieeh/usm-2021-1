@@ -112,10 +112,10 @@ public:
     *****/
     void append(int v){
         if (tamano + 1 > sizeB) {
-            while ( sizeB < (tamano + 1) ) {
+            while ( pow(2, k) < (tamano + 1) ) {
                 k++;
-                sizeB = pow(2, k);
             }
+            sizeB = pow(2, k);
             int* Btemp = new int[sizeB];
             for (unsigned long i = 0; i < tamano; i++) {
                 Btemp[i] = B[i];
@@ -182,12 +182,12 @@ public:
     }
 
     
-// Funcion de testeo de array, no considerar.
-//    void arrayCheck(){
-//        for (int i = 0; i < sizeB; i++) {
-//            cout << "Arreglo B en la posicion " << i << ":" << B[i] << endl;
-//        }
-//        cout << sizeB << endl;
-//    }
+ //Funcion de testeo de array, no considerar.
+    void arrayCheck(){
+        for (int i = 0; i < sizeB; i++) {
+            cout << "Arreglo B en la posicion " << i << ":" << B[i] << endl;
+        }
+        cout << sizeB << endl;
+    }
     
 };
