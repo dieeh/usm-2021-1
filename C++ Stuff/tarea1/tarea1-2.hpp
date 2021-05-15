@@ -184,13 +184,12 @@ public:
     }
 
     
- //// Funcion de testeo de array, no considerar.
-    void arrayCheck(){
-        for (int i = 0; i < sizeB; i++) {
-            cout << "Arreglo B en la posicion " << i << ":" << B[i] << endl;
-        }
-        cout << "sizeB:" << sizeB << endl;
-        cout << "tamanho:" << tamano << endl;
-    }
+// Funcion de testeo de array, no considerar.
+//    void arrayCheck(){
+//        for (int i = 0; i < sizeB; i++) {
+//            cout << "Arreglo B en la posicion " << i << ":" << B[i] << endl;
+//        }
+//        cout << sizeB << endl;
+//    }
     
 };
