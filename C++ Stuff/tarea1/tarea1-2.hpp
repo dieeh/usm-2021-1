@@ -14,10 +14,14 @@ private:
     
 public:
     arr_extensible(){
-        k = 0;
-        sizeB = pow(2, k);
+        k=0;
+        sizeB = 0;
         tamano = 0;
         B = new int[tamano];
+        
+        while ( (pow(2,k) < tamano) ) {
+            k++;
+        }
     }
 
     arr_extensible(unsigned long n){
@@ -165,8 +169,8 @@ public:
             delete[] Btemp;
             tamano--;
         }else if ( (k == 0) ){
-            delete B;
-            B = new int[0];
+            delete[] B;
+            B = new int[1];
         }else{
             tamano--;
         }
