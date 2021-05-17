@@ -54,7 +54,7 @@ public:
     }
 
     /*****
-    *  bool setValue 
+    *  bool arr_extensible::setValue 
     *****
     *  Esta función asigna el valor entero v a una posición i del arreglo B y retorna
     *  un valor booleano, el cual depende de que la posición este dentro del rango de tamaño 
@@ -79,7 +79,7 @@ public:
     }
     
     /*****
-    *  int getValue 
+    *  int arr_extensible::getValue 
     *****
     *  Esta función  retorna el valor entero que se encuentra alojado en la posición i que le solicitemos
     *  al arreglo B. Si esta posición esta fuera del rango del tamaño del arreglo, la operación no tendrá
@@ -103,7 +103,7 @@ public:
     }
 
     /*****
-    *  void append
+    *  void arr_extensible::append
     *****
     *  Esta función agrega un elemento al final del arreglo B y lo hace crecer de ser necesario 
     *  en forma exponencial en base 2 dependiendo del tamaño original.
@@ -142,7 +142,7 @@ public:
     }
 
     /*****
-    *  void remove
+    *  void arr_extensible::remove
     *****
     *  Esta función elimina un elemento al final del arreglo B y lo hace decrecer de ser necesario
     *  en forma exponencial en base 2 dependiendo del tamaño original.
@@ -177,7 +177,7 @@ public:
     }
 
     /*****
-    *  unsigned long size
+    *  unsigned long arr_extensible::size
     *****
     *  Esta función nos indica el tamaño actual del arreglo B.
     *****
