@@ -20,7 +20,7 @@ int main() {
         arreglo.append(67);
         arreglo.remove();
         arreglo.size();
-        arreglo.~arr_extensible();
+        
         
     }else if (letra == 'B'){
         arr_extensible arreglo(17);
@@ -29,7 +29,7 @@ int main() {
         arreglo.append(67);
         arreglo.remove();
         arreglo.size();
-        arreglo.~arr_extensible();
+        
 
     }else if (letra == 'C'){
         arr_extensible arreglo(10, 134);
@@ -38,7 +38,7 @@ int main() {
         arreglo.append(67);
         arreglo.remove();
         arreglo.size();
-        arreglo.~arr_extensible();
+        
     }
 
     return 0;

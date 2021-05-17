@@ -1,3 +1,21 @@
 Nicolás Cancino Henriquez, 202004680-8, Paralelo 200
+    Programó:
+        - cantidadPersonas()
+        - arr_extensible::append() 
+        - arr_extensible::remove()
+        - arr_extensible::size() 
 Carlos Müller Navarro, 202004590-9, Paralelo 200
+    Programó:
+        - cantidadPersonas()
+        - arr_extensible::append()
+        - arr_extensible::remove() 
+        - arr_extensible::size() 
 Diego Paz Letelier, 202004502-k, Paralelo 200
+    Programó:
+        - separarHora()
+        - compararHoras()
+        - cantidadLineas()
+        - cantidadPersonas()
+        - arr_extensible::setValue()
+        - arr_extensible::getValue()
+        - arr_extensible::append() 
