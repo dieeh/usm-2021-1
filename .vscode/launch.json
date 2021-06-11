@@ -24,6 +24,14 @@
                 }
             ],
             "preLaunchTask": "C/C++: g++.exe compilar archivo activo"
+        },
+        {
+            "name": "Python: Archivo actual",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "cwd" : "${workspaceFolder}/${relativeFileDirname}"
         }
     ]
 }
