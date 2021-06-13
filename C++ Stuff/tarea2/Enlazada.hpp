@@ -15,9 +15,9 @@ class tLista {
     public:
         tLista() {
             head = tail = curr = new tNodo;
-            head->sig = NULL
+            head->sig = NULL;
             listSize = 0;
-            pos = 0
+            pos = 0;
         }
 
         void clear() {
@@ -43,7 +43,7 @@ class tLista {
         }
         tElemLista erase() {
             tNodo* aux = curr->sig->sig;
-            curr->sig = delete [] tNodo;
+            curr->sig = delete tNodo;
             
         }
         void moveToStart() {
