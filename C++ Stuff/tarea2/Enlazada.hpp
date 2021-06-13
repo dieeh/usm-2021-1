@@ -1,9 +1,11 @@
-typedef struct tElemLista //Definir dependiendo de la tarea
+#include <iostream>
+
+typedef struct tElemLista; //Definir dependiendo de la tarea
 
 struct tNodo {
     tElemLista info;
     tNodo* sig;
-}
+};
 
 class tLista {
     private:
@@ -80,4 +82,4 @@ class tLista {
                 }
         }
         tNodo getValue();        
-}
+};
