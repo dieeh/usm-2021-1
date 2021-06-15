@@ -5,16 +5,26 @@
 
 using namespace std;
 
+struct monomio{
+    int exponente;
+    int cantidad;
+};
+
 int main() {
     fstream file;
-    int cantidad;
+    string cantidad;
+    int aux;
 
     file.open("entradaPolinomio.txt", ios::in);
     if (!file.is_open()) {
         cerr << "Error al abrir el archivo" << endl;
         exit(1);
     }
+    getline(file, cantidad);
+    aux = stoi(cantidad);
+
     
+
     
     
 
