@@ -12,7 +12,7 @@ struct monomio{
 
 int main() {
     fstream file;
-    string cantidad;
+    string cantidad, aux2;
     int aux;
 
     file.open("entradaPolinomio.txt", ios::in);
@@ -22,7 +22,12 @@ int main() {
     }
     getline(file, cantidad);
     aux = stoi(cantidad);
-
+    
+    for (int i = 0; i < aux; i++){
+        getline(file, aux2);
+        
+    }
+    
     
 
     

@@ -1,7 +1,7 @@
 //Esto seria algo asi como un TDA de polinomios, para usar dsps
 //idealmente se copia y pega al final de tarea2-1.hpp como otra
 //clase a utilizar
-
+#include <iostream>
 
 using namespace std;
 
@@ -38,9 +38,10 @@ class polinomio {
             float resultado = 0, aux;
             for (int i = 0; i < cantidad; i++){
                 aux = x;
-                for (int j = 0; i < polinomioTotal[i].exponente; j++) {
+                for (int j = 0; j < polinomioTotal[i].exponente; j++) {
                     aux *= x;
                 }
+                aux *= polinomioTotal[i].coeficiente;
                 resultado += aux;
             }
             return resultado;
