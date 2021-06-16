@@ -6,8 +6,8 @@
 using namespace std;
 
 struct monomio{
-    int exponente;
-    int cantidad;
+    int coeficiente;
+    unsigned int exponente;
 };
 
 int main() {
