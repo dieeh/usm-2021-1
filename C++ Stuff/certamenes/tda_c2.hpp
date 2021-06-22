@@ -41,7 +41,9 @@ public:
 
     void clear(){}
 
-    int insert(tElemLista){}
+    int insert(tElemLista item){}
+
+    int append(tElemLista item){}
 
     int erase(){}
 
@@ -53,7 +55,13 @@ public:
 
     void next(){}
 
-    void moveToPos(){}
+    int lenght(){}
+
+    int currPos(){}    
+
+    void moveToPos(unsigned int posicion){}
+
+    tElemLista getValue(){}
 
 
     
