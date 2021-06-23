@@ -27,7 +27,7 @@ int main() {
         for (int j = 0; j < aux3; j++){
             file >> tempA;
             file >> tempB;
-            arreglo[i].append(stoi(tempA), stoi(tempB));
+            arreglo[i].appendMon(stoi(tempA), stoi(tempB));
         }
         
     }
@@ -45,7 +45,7 @@ int main() {
             file >> tempA;
             file >> tempB;
             aux5 = stoi(tempA);
-            float aux6 = stoi(tempB);
+            float aux6 = stof(tempB);
             aux2 = to_string(arreglo[aux5].evaluar(aux6));
             output.append(aux2 + " ");
         }

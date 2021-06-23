@@ -2,16 +2,16 @@
 
 using namespace std;
 
+struct monomio{
+    int coeficiente;
+    unsigned int exponente;
+};
+
 typedef monomio tElemLista; //Definir dependiendo de la tarea
 
 struct tNodo{
     tElemLista info; 
     tNodo* sig;
-};
-
-struct monomio{
-    int coeficiente;
-    unsigned int exponente;
 };
 
 class tLista {
@@ -139,7 +139,7 @@ class tLista {
 
         tElemLista getValue() {
             tElemLista a;
-            a = curr->info;
+            a = curr->sig->info;
             return a;
         }        
 };
@@ -159,7 +159,7 @@ class polinomio {
             polinomioTotal.clear();
             }
 
-        void append(int coef, unsigned int exp){
+        void appendMon(int coef, unsigned int exp){
             monomio a;
             a.exponente = exp;
             a.coeficiente = coef;
