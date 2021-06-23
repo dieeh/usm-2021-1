@@ -6,7 +6,7 @@ typedef int tElemArbol; //Definir dependiendo de la tarea
 //Falta la funcion procesar
 
 struct tNodoArbolBin{
-    tipoElem info;
+    tElemArbol info;
     tNodoArbolBin* izq;
     tNodoArbolBin* der;
 };
@@ -42,7 +42,7 @@ class tABB {
 
         }
         int find(tElemArbol item) {
-            int findHelp(tNodoArbolBin *nodo, tipoElem item) {
+            int findHelp(tNodoArbolBin *nodo, tElemArbol item) {
                 if (nodo == NULL) return 0; 
                 if (nodo->info == item) return 1; 
                 if (item < nodo->info) {
@@ -72,6 +72,7 @@ class tABB {
                 procesar(nodo->info);
                 preOrdenHelp (nodo->izq);
                 preOrdenHelp (nodo->der);
+            }
         }
         void postOrden() {
             void postOrdenHelp (tNodoArbolBin *nodo) {
@@ -79,5 +80,6 @@ class tABB {
                 postOrdenHelp (nodo->izq);
                 postOrdenHelp (nodo->der);
                 procesar(nodo->info);
+            }
         }
 }
