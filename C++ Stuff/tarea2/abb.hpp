@@ -36,7 +36,10 @@ class tABB {
             nElems = 0;
         }
         void insert(tElemArbol item) {
-
+            if(raiz==NULL) raiz = item;
+            else {
+                
+            }
         }
         void remove(tElemArbol item) {
 
