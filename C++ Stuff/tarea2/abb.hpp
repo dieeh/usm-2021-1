@@ -36,14 +36,14 @@ class tABB {
             nElems = 0;
         }
         void insert(tElemArbol item) {
-            if(raiz==NULL) raiz = item;                                         //Si el arbol está vacio creamos un nodo como raiz
+            if(raiz==NULL) raiz->info = item;                                         //Si el arbol está vacio creamos un nodo como raiz
             else{                                                               //Si el arborl tiene un nodo o más
                 int valorRaiz = raiz->info;                                     //Obtenemos el valor de la raiz
                 if(item < valorRaiz){                                           //Si el nodo es menor a la raiz, lo insertamos en el lado izquierdo
-                    insert(raiz->izq, item);
+                    insert(raiz->izq->info, item);
                 }
                 else{                                                           //Si el nodo es mayor a la raiz, lo insertamos en el lado derecho
-                    insert(raiz->der, item);
+                    insert(raiz->der->info, item);
                 }                
             }
         }
@@ -93,4 +93,4 @@ class tABB {
             }
             postOrdenHelp (raiz);
         }
-}
+};
