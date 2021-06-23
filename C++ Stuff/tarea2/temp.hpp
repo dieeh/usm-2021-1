@@ -2,6 +2,7 @@
 //idealmente se copia y pega al final de tarea2-1.hpp como otra
 //clase a utilizar
 #include <iostream>
+#include "tarea2-1.hpp"
 
 using namespace std;
 
@@ -12,23 +13,28 @@ struct monomio{
 
 class polinomio {
     private:
-        monomio* polinomioTotal;
+        tLista polinomioTotal;
         int cantidad;
 
     public:
-        polinomio(int x){
-            cantidad = x;
-            polinomioTotal = new monomio[cantidad];
+        polinomio(){
+            cantidad = 0;
+            tLista polinomioTotal;
         }
 
         ~polinomio(){
-            delete[] polinomioTotal;
+            polinomioTotal.clear();
             }
 
+        void append(monomio x){
+            polinomioTotal.append(x);
+            cantidad++;
+        }
+
         int coeficiente(unsigned int exponente){
-            for (int i = 0; i < cantidad; i++) {
-                if (polinomioTotal[i].exponente == exponente){
-                    return polinomioTotal[i].coeficiente;
+            for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()) {
+                if (polinomioTotal.getValue().exponente == exponente){
+                    return polinomioTotal.getValue().coeficiente;
                 }
             }
             return 0;

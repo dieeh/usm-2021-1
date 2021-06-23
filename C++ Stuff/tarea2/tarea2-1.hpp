@@ -2,7 +2,7 @@
 
 using namespace std;
 
-typedef int tElemLista; //Definir dependiendo de la tarea
+typedef monomio tElemLista; //Definir dependiendo de la tarea
 
 struct tNodo{
     tElemLista info; 
@@ -29,7 +29,7 @@ class tLista {
             pos = 0;
         }
 
-        ~tLista () {
+        ~tLista() {
             tNodo* elim;
             tNodo* aux = head;
             while (aux != NULL) {
@@ -50,6 +50,7 @@ class tLista {
                 delete elim;
             }
         }
+
         int insert(tElemLista item) {
             tNodo* aux = curr->sig;
             curr->sig = new tNodo;
@@ -58,8 +59,8 @@ class tLista {
             if (curr == tail) tail = curr->sig;
             listSize++;
             return pos;
-            
         }
+
         int append(tElemLista item) {
             while (curr != tail) {
                 curr = curr->sig;
@@ -72,6 +73,7 @@ class tLista {
             listSize++;
             return pos;   
         }
+
         tElemLista erase() {
             tElemLista a;
             if (curr == tail) {
@@ -88,20 +90,24 @@ class tLista {
                 return a;
             }
         }
+
         void moveToStart() {
             curr = head; 
             pos = 0; 
         }
+
         void moveToEnd() {
             curr = tail;
             pos = listSize -1;
         }
+
         void next() { 
             if (curr != tail) { 
                 curr = curr->sig; 
                 pos++; 
             } 
         }
+
         void prev() {
             tNodo* temp;
             if (curr == head) return;
@@ -110,12 +116,15 @@ class tLista {
             curr = temp;
             pos--;
         }
+
         int lenght() {
             return listSize;
         }
+
         int currPos() {
             return pos;
         }
+
         void moveToPos(unsigned int posicion) {
             unsigned int i;
             if (posicion < 0 || posicion > listSize) return;
@@ -124,8 +133,9 @@ class tLista {
             for (i = 0; i < posicion; i++) {
                 curr = curr->sig;
                 pos++;
-                }
+            }
         }
+
         tElemLista getValue() {
             tElemLista a;
             a = curr->info;
@@ -133,40 +143,3 @@ class tLista {
         }        
 };
 
-class polinomio {
-    private:
-        monomio* polinomioTotal;
-        int cantidad;
-
-    public:
-        polinomio(int x){
-            cantidad = x;
-            polinomioTotal = new monomio[cantidad];
-        }
-
-        ~polinomio(){
-            delete[] polinomioTotal;
-            }
-
-        int coeficiente(unsigned int exponente){
-            for (int i = 0; i < cantidad; i++) {
-                if (polinomioTotal[i].exponente == exponente){
-                    return polinomioTotal[i].coeficiente;
-                }
-            }
-            return 0;
-            }
-            
-        float evaluar(float x){
-            float resultado = 0, aux;
-            for (int i = 0; i < cantidad; i++){
-                aux = x;
-                for (int j = 0; j < polinomioTotal[i].exponente; j++) {
-                    aux *= x;
-                }
-                aux *= polinomioTotal[i].coeficiente;
-                resultado += aux;
-            }
-            return resultado;
-        }
-};
