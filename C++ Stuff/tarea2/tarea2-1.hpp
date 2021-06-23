@@ -144,3 +144,46 @@ class tLista {
         }        
 };
 
+class polinomio {
+    private:
+        tLista polinomioTotal;
+        int cantidad;
+
+    public:
+        polinomio(){
+            cantidad = 0;
+            tLista polinomioTotal;
+        }
+
+        ~polinomio(){
+            polinomioTotal.clear();
+            }
+
+        void append(monomio x){
+            polinomioTotal.append(x);
+            cantidad++;
+        }
+
+        int coeficiente(unsigned int exponente){
+            for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()) {
+                if (polinomioTotal.getValue().exponente == exponente){
+                    return polinomioTotal.getValue().coeficiente;
+                }
+            }
+            return 0;
+            }
+            
+        float evaluar(float x){
+            float resultado = 0, aux;
+            for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()){
+                aux = x;
+                for (int j = 0; j < polinomioTotal.getValue().exponente; j++) {
+                    aux *= x;
+                }
+                aux *= polinomioTotal.getValue().coeficiente;
+                resultado += aux;
+            }
+            return resultado;
+        }
+};
+

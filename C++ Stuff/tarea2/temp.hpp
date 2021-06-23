@@ -42,12 +42,12 @@ class polinomio {
             
         float evaluar(float x){
             float resultado = 0, aux;
-            for (int i = 0; i < cantidad; i++){
+            for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()){
                 aux = x;
-                for (int j = 0; j < polinomioTotal[i].exponente; j++) {
+                for (int j = 0; j < polinomioTotal.getValue().exponente; j++) {
                     aux *= x;
                 }
-                aux *= polinomioTotal[i].coeficiente;
+                aux *= polinomioTotal.getValue().coeficiente;
                 resultado += aux;
             }
             return resultado;
