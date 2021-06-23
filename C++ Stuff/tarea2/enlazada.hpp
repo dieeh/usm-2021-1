@@ -1,5 +1,7 @@
 #include <iostream>
 
+//alo
+
 using namespace std;
 
 typedef int tElemLista; //Definir dependiendo de la tarea
