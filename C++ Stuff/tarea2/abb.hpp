@@ -67,9 +67,17 @@ class tABB {
             inOrdenHelp (raiz);
         }
         void preOrden() {
-
+            void preOrdenHelp (tNodoArbolBin *nodo) {
+                if (nodo == NULL) return;
+                procesar(nodo->info);
+                preOrdenHelp (nodo->izq);
+                preOrdenHelp (nodo->der);
         }
         void postOrden() {
-
+            void postOrdenHelp (tNodoArbolBin *nodo) {
+                if (nodo == NULL) return;
+                postOrdenHelp (nodo->izq);
+                postOrdenHelp (nodo->der);
+                procesar(nodo->info);
         }
 }
