@@ -73,6 +73,7 @@ class tABB {
                 preOrdenHelp (nodo->izq);
                 preOrdenHelp (nodo->der);
             }
+            preOrdenHelp (raiz);
         }
         void postOrden() {
             void postOrdenHelp (tNodoArbolBin *nodo) {
@@ -81,5 +82,6 @@ class tABB {
                 postOrdenHelp (nodo->der);
                 procesar(nodo->info);
             }
+            postOrdenHelp (raiz);
         }
 }
