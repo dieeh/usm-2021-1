@@ -29,7 +29,8 @@ class tLista {
             pos = 0;
         }
 
-        ~tLista() {
+        ~tLista () {
+            //clear();
             tNodo* elim;
             tNodo* aux = head;
             while (aux != NULL) {
