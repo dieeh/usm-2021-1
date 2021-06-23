@@ -30,6 +30,7 @@ class tLista {
         }
 
         ~tLista () {
+            //clear();
             tNodo* elim;
             tNodo* aux = head;
             while (aux != NULL) {
