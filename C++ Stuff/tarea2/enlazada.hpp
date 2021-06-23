@@ -74,16 +74,15 @@ class tLista {
             if (curr == tail) {
                 tNodo* aux = NULL;
                 a = curr->info;
-                return a;
                 delete curr->sig;
                 curr->sig = aux;
+                return a;
             }
             else {
                 tNodo* aux = curr->sig;
-                a = curr->info;
-                return a;
                 delete curr->sig;
                 curr->sig = aux;
+                return a;
             }
         }
         void moveToStart() {
