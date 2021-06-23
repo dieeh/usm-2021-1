@@ -25,25 +25,25 @@ int main() {
         getline(file, aux2);
         aux3 = stoi(aux2);
         for (int j = 0; j < aux3; j++){
-            cin >> tempA;
-            cin >> tempB;
+            file >> tempA;
+            file >> tempB;
             arreglo[i].append(stoi(tempA), stoi(tempB));
         }
         
     }
     string output;
-    while (cin >> aux4) {
+    while (file >> aux4) {
         if (aux4 == "COEFICIENTE"){
-            cin >> tempA;
-            cin >> tempB;
+            file >> tempA;
+            file >> tempB;
             aux5 = stoi(tempA);
             aux3 = stoi(tempB);
             aux2 = to_string(arreglo[aux5].coeficiente(aux3));
             output.append(aux2 + " ");
         }
         if (aux4 == "EVALUAR"){
-            cin >> tempA;
-            cin >> tempB;
+            file >> tempA;
+            file >> tempB;
             aux5 = stoi(tempA);
             float aux6 = stoi(tempB);
             aux2 = to_string(arreglo[aux5].evaluar(aux6));
