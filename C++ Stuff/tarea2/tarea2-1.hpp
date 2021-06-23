@@ -159,8 +159,11 @@ class polinomio {
             polinomioTotal.clear();
             }
 
-        void append(monomio x){
-            polinomioTotal.append(x);
+        void append(int coef, unsigned int exp){
+            monomio a;
+            a.exponente = exp;
+            a.coeficiente = coef;
+            polinomioTotal.append(a);
             cantidad++;
         }
 
