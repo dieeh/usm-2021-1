@@ -5,11 +5,6 @@
 
 using namespace std;
 
-struct monomio{
-    int coeficiente;
-    unsigned int exponente;
-};
-
 int main() {
     fstream file;
     string cantidad, aux2;
