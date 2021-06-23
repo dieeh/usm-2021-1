@@ -7,8 +7,9 @@ using namespace std;
 
 int main() {
     fstream file;
-    string cantidad, aux2;
+    string cantidad, aux2, tempA, tempB, aux4;
     int aux, aux3;
+    polinomio* arreglo;
 
     file.open("entradaPolinomio.txt", ios::in);
     if (!file.is_open()) {
@@ -18,14 +19,30 @@ int main() {
     getline(file, cantidad);
     aux = stoi(cantidad);
     
+    arreglo = new polinomio[aux];
+
     for (int i = 0; i < aux; i++){
         getline(file, aux2);
         aux3 = stoi(aux2);
-        for (int j = 0; j < aux3; j++) {
-            
+        for (int j = 0; j < aux3; j++){
+            cin >> tempA;
+            cin >> tempB;
+            arreglo[i].append(stoi(tempA), stoi(tempB));
         }
         
     }
+    string output;
+    while (cin >> aux4) {
+        if (aux4 == "COEFICIENTE"){
+            cin >> tempA;
+            cin >> tempB;
+            tempA = stoi(tempA);
+            tempB = stoi(tempB);
+            output.append()
+        }
+        
+    }
+    
     
     
 
