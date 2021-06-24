@@ -51,6 +51,7 @@ int main() {
         }
         
     }
+    file.close();
     cout << output << endl;
     return 0;
 }
