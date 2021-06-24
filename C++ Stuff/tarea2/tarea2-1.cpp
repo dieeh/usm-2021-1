@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <cmath>
 #include "tarea2-1.hpp"
 
 using namespace std;
@@ -40,16 +41,21 @@ int main() {
             file >> tempB;
             aux5 = stoi(tempA);
             aux3 = stoi(tempB);
-            aux2 = to_string(arreglo[aux5].coeficiente(aux3)) + "\n";
-            output.append(aux2);
+            aux2 = to_string(arreglo[aux5].coeficiente(aux3));
+            output.append(aux2 + "\n");
         }
         if (aux4 == "EVALUAR"){
             file >> tempA;
             file >> tempB;
             aux5 = stoi(tempA);
             float aux6 = stof(tempB);
-            aux2 = to_string(arreglo[aux5].evaluar(aux6)) + "\n";
-            output.append(aux2);
+            aux2 = to_string(arreglo[aux5].evaluar(aux6));
+            for (int k = 0; k < aux2.length(); k++) {
+                if(aux2[k] == '.'){
+                    aux2 = aux2.substr(0, k+3);
+                }
+            }
+            output.append(aux2 + "\n");
         }
         
     }

@@ -20,6 +20,7 @@ class tABB {
             raiz = NULL;
             nElems = 0; 
         }
+
         ~tABB() {
             clear();
         }
@@ -35,6 +36,7 @@ class tABB {
             raiz = NULL;
             nElems = 0;
         }
+
         void insert(tElemArbol item) {
             if(raiz==NULL) raiz->info = item;                                         //Si el arbol está vacio creamos un nodo como raiz
             else{                                                               //Si el arborl tiene un nodo o más
@@ -47,9 +49,11 @@ class tABB {
                 }                
             }
         }
+
         void remove(tElemArbol item) {
 
         }
+
         int find(tElemArbol item) {
             int findHelp(tNodoArbolBin *nodo, tElemArbol item) {
                 if (nodo == NULL) return 0; 
@@ -63,6 +67,7 @@ class tABB {
             }
             return findHelp(raiz, item);
         }
+
         int size() {
             return nElems;
         }
@@ -75,6 +80,7 @@ class tABB {
             }
             inOrdenHelp (raiz);
         }
+
         void preOrden() {
             void preOrdenHelp (tNodoArbolBin *nodo) {
                 if (nodo == NULL) return;
@@ -84,6 +90,7 @@ class tABB {
             }
             preOrdenHelp (raiz);
         }
+        
         void postOrden() {
             void postOrdenHelp (tNodoArbolBin *nodo) {
                 if (nodo == NULL) return;
