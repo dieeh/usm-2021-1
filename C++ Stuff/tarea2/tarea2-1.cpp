@@ -16,23 +16,20 @@ int main() {
         cerr << "Error al abrir el archivo" << endl;
         exit(1);
     }
-    getline(file, cantidad);
+    file >> cantidad;
     aux = stoi(cantidad);
     
     arreglo = new polinomio[aux];
 
     for (int i = 0; i < aux; i++){
-        getline(file, aux2);
+        file >> aux2;
         aux3 = stoi(aux2);
-        cout << "aux3: '" << aux3 << "'" << endl;
         for (int j = 0; j < aux3; j++){
-            file >> tempA;
-            file >> tempB;
-            int auxA = stoi(tempA);
-            cout << "auxA: '" << auxA << "'" << endl;
-            unsigned long auxB = stoul(tempB);
-            cout << "auxB: '" << auxB << "'" << endl;
-            //arreglo[i].appendMon(auxA, auxB);
+            file >> tempA; //exponente
+            file >> tempB; //coeficiente
+            unsigned int auxA = stoul(tempA);
+            int auxB = stoi(tempB);
+            arreglo[i].appendMon(auxB, auxA);
         }
         
     }
@@ -43,16 +40,16 @@ int main() {
             file >> tempB;
             aux5 = stoi(tempA);
             aux3 = stoi(tempB);
-            aux2 = to_string(arreglo[aux5].coeficiente(aux3));
-            output.append(aux2 + " ");
+            aux2 = to_string(arreglo[aux5].coeficiente(aux3)) + "\n";
+            output.append(aux2);
         }
         if (aux4 == "EVALUAR"){
             file >> tempA;
             file >> tempB;
             aux5 = stoi(tempA);
             float aux6 = stof(tempB);
-            aux2 = to_string(arreglo[aux5].evaluar(aux6));
-            output.append(aux2 + " ");
+            aux2 = to_string(arreglo[aux5].evaluar(aux6)) + "\n";
+            output.append(aux2);
         }
         
     }

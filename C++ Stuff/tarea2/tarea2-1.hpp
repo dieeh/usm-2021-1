@@ -180,8 +180,13 @@ class polinomio {
             float resultado = 0, aux;
             for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()){
                 aux = x;
-                for (int j = 0; j < polinomioTotal.getValue().exponente; j++) {
-                    aux *= x;
+                unsigned int aux2 = polinomioTotal.getValue().exponente;
+                if ( polinomioTotal.getValue().exponente == 0) {
+                    aux = 1;
+                }else{
+                    for (int j = 1; j < polinomioTotal.getValue().exponente; j++) {
+                        aux *= x;
+                    }
                 }
                 aux *= polinomioTotal.getValue().coeficiente;
                 resultado += aux;
