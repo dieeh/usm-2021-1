@@ -24,10 +24,13 @@ int main() {
     for (int i = 0; i < aux; i++){
         getline(file, aux2);
         aux3 = stoi(aux2);
+        cout << aux3 << endl;
         for (int j = 0; j < aux3; j++){
             file >> tempA;
             file >> tempB;
-            arreglo[i].appendMon(stoi(tempA), stoi(tempB));
+            int auxA = stoi(tempA);
+            unsigned int auxB = (unsigned int) stoi(tempB);      
+            arreglo[i].appendMon(auxA, auxB);
         }
         
     }
