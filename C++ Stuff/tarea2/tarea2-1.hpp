@@ -50,6 +50,8 @@ class tLista {
                 aux = aux->sig;
                 delete elim;
             }
+            listSize = 0;
+            pos = 0;
         }
 
         int insert(tElemLista item) {
@@ -141,7 +143,26 @@ class tLista {
             tElemLista a;
             a = curr->sig->info;
             return a;
-        }        
+        }    
+
+        void sort(){
+            tNodo *aux, *aux2;
+            tElemLista aux3;
+            for (int i = 0; i < lenght(); i++) {
+                for (moveToStart() ; currPos() < lenght(); next()) {
+                    aux = curr; //actual
+                    next();
+                    aux2 = curr; //siguiente
+                    prev();
+                    if (aux->info.exponente < aux2->info.exponente){
+                        aux3 = aux->info;
+                        aux->info = aux2->info;
+                        aux2->info = aux3;
+                    }
+                }
+            }
+            
+        }    
 };
 
 class polinomio {
@@ -177,21 +198,40 @@ class polinomio {
             }
             
         float evaluar(float x){
-            float resultado = 0, aux;
-            for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()){
-                aux = x;
-                unsigned int aux2 = polinomioTotal.getValue().exponente;
-                if ( polinomioTotal.getValue().exponente == 0) {
-                    aux = 1;
+            float resultado = 0, aux, aux2 = 0;
+            int aux4;
+            unsigned int aux3 = polinomioTotal.getValue().exponente;
+            polinomioTotal.sort();
+            for (polinomioTotal.moveToStart() ; aux3 >= 0; polinomioTotal.next()){
+                aux4 = coeficiente(aux3);
+                aux = aux4 + resultado;
+                if (aux3 == 0){
+                    resultado = aux;
+                    return resultado;
                 }else{
-                    for (int j = 1; j < polinomioTotal.getValue().exponente; j++) {
-                        aux *= x;
-                    }
+                    resultado = aux * x;
                 }
-                aux *= polinomioTotal.getValue().coeficiente;
-                resultado += aux;
+                aux3--;
             }
             return resultado;
+
+                
+
+            //for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()){
+            //    aux = x;
+            //    unsigned int aux2 = polinomioTotal.getValue().exponente;
+            //    if ( polinomioTotal.getValue().exponente == 0) {
+            //        aux = 1;
+            //    }else{
+            //        for (int j = 1; j < polinomioTotal.getValue().exponente; j++) {
+            //            aux *= x;
+            //        }
+            //    }
+            //    aux *= polinomioTotal.getValue().coeficiente;
+            //    resultado += aux;
+            //}
+            //return resultado;
         }
+
 };
 
