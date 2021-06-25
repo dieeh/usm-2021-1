@@ -3,12 +3,18 @@
 using namespace std;
 
 typedef int tElemArbol; //Definir dependiendo de la tarea
+
 //Falta la funcion procesar
+//No le encuentro un uso a la funcion tdvia asi que se deja como está
+//en volá en la implementacion le encuentro el uso
+
+//remove casos 1 y 2 terminados, falta el remove de nodo con 2 hijos
 
 struct tNodoArbolBin{
     tElemArbol info;
     tNodoArbolBin* izq;
     tNodoArbolBin* der;
+    tNodoArbolBin* padre;
 };
 
 class tABB {
@@ -23,15 +29,20 @@ class tABB {
             delete nodo; 
         }
 
-        void insertHelp(tNodoArbolBin *nodo, tElemArbol item){
-            if(nodo==NULL) nodo->info = item;                     //Si el arbol está vacio creamos un nodo como raiz
-            else{                                                 //Si el arbol tiene un nodo o más
+        void insertHelp(tNodoArbolBin *nodo, tElemArbol item, tNodoArbolBin *padre){
+            if(nodo==NULL) {
+                nodo = new tNodoArbolBin;
+                nodo->info = item;                    //Si el arbol está vacio creamos un nodo como raiz
+                nodo->padre = padre;
+                nElems++;
+            }else{                                                 //Si el arbol tiene un nodo o más
                 int valorNodo = nodo->info;                       //Obtenemos el valor de la raiz
+                tNodoArbolBin* aux = nodo;
                 if(item < valorNodo){                             //Si el nodo es menor a la raiz, lo insertamos en el lado izquierdo
-                    insertHelp(nodo->izq, item);
+                    insertHelp(nodo->izq, item, aux);
                 }
                 else{                                             //Si el nodo es mayor a la raiz, lo insertamos en el lado derecho
-                    insertHelp(nodo->der, item);
+                    insertHelp(nodo->der, item, aux);
                 }                
             }
         }
@@ -47,45 +58,11 @@ class tABB {
             }
         }
 
-    public:
-        tABB() {
-            raiz = NULL;
-            nElems = 0; 
-        }
-
-        ~tABB() {
-            clear();
-        }
-
-        void clear() {
-            clearHelp(raiz);
-            raiz = NULL;
-            nElems = 0;
-        }
-
-        void insert(tElemArbol item) {
-            insertHelp(raiz, item); 
-        } 
-
-        void remove(tElemArbol item) {}
-
-        int find(tElemArbol item) {
-            return findHelp(raiz, item);
-        }
-
-        int size() {
-            return nElems;
-        }
-        
         void inOrdenHelp (tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
             inOrdenHelp (nodo->izq); 
             procesar(nodo->info);
             inOrdenHelp (nodo->der); 
-        }
-
-        void inOrden() {
-            inOrdenHelp (raiz);
         }
 
         void preOrdenHelp (tNodoArbolBin *nodo) {
@@ -95,15 +72,96 @@ class tABB {
             preOrdenHelp (nodo->der);
         }
 
-        void preOrden() {
-            preOrdenHelp (raiz);
-        }
-
         void postOrdenHelp (tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
             postOrdenHelp (nodo->izq);
             postOrdenHelp (nodo->der);
             procesar(nodo->info);
+        }
+
+        tNodoArbolBin* search(tNodoArbolBin *nodo, tElemArbol item){
+            if (nodo->info == item) return nodo; 
+            if (item < nodo->info) {
+                search(nodo->izq, item);
+            }
+            else {
+                search(nodo->der, item);
+            }
+        }
+
+        void procesar(tElemArbol item) {}
+
+    public:
+        tABB() {
+            raiz = NULL;
+            nElems = 0; 
+        }
+
+        ~tABB() {
+            clearHelp(raiz);
+        }
+
+        void clear() {
+            clearHelp(raiz);
+            raiz = NULL;
+            nElems = 0;
+        }
+
+        void insert(tElemArbol item) {
+            insertHelp(raiz, item, NULL); 
+        } 
+
+        void remove(tElemArbol item) {
+            int caso;
+            if(find(item) == 0) return;
+            tNodoArbolBin* aux = search(raiz, item);
+            if (aux->der == NULL && aux->izq == NULL) caso = 1;
+            if ((aux->der != NULL && aux->izq == NULL) || (aux->der == NULL && aux->izq != NULL) ) caso = 2;
+            if (aux->der != NULL && aux->izq != NULL) caso = 3;
+            switch (caso) {
+            case 1: //nodo sin hijos
+                delete aux;
+                break;
+            case 2: //nodo con 1 hijo
+                if(aux->padre->der == aux){
+                    if (aux->der == NULL) {
+                        aux->padre->der = aux->izq;
+                        aux->izq->padre = aux->padre;
+                    }else{
+                        aux->padre->der = aux->der;
+                        aux->der->padre = aux->padre;
+                    }
+                }else{
+                    if (aux->der == NULL) {
+                        aux->padre->izq = aux->izq;
+                        aux->izq->padre = aux->padre;
+                    }else{
+                        aux->padre->izq = aux->der;
+                        aux->der->padre = aux->padre;
+                    }
+                }
+                delete aux;
+                break;
+            case 3: //nodo con 2 hijos
+
+                break;
+            }
+        }
+
+        int find(tElemArbol item) {
+            return findHelp(raiz, item);
+        }
+
+        int size() {
+            return nElems;
+        }
+
+        void inOrden() {
+            inOrdenHelp (raiz);
+        }
+
+        void preOrden() {
+            preOrdenHelp (raiz);
         }
 
         void postOrden() {
