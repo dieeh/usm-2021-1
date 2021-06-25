@@ -57,6 +57,7 @@ class tABB {
             switch (caso) {
             case 1: //nodo sin hijos
                 delete aux;
+                nElems--;
                 break;
             case 2: //nodo con 1 hijo
                 if(aux->padre->der == aux){
@@ -77,6 +78,7 @@ class tABB {
                     }
                 }
                 delete aux;
+                nElems--;
                 break;
             case 3: //nodo con 2 hijos
                 bool sucesorAntecesor;
