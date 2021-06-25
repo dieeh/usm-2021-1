@@ -14,16 +14,7 @@ struct tNodoArbolBin{
 class tABB {
     private:
         tNodoArbolBin *raiz; 
-        int nElems; 
-    public:
-        tABB() {
-            raiz = NULL;
-            nElems = 0; 
-        }
-
-        ~tABB() {
-            clear();
-        }
+        int nElems;
 
         void clearHelp(tNodoArbolBin *nodo) {
             if (nodo == NULL) return; 
@@ -32,27 +23,17 @@ class tABB {
             delete nodo; 
         }
 
-        void clear() {
-            clearHelp(raiz);
-            raiz = NULL;
-            nElems = 0;
-        }
-
-        void insert(tElemArbol item) {
-            if(raiz==NULL) raiz->info = item;                     //Si el arbol está vacio creamos un nodo como raiz
+        void insertHelp(tNodoArbolBin *nodo, tElemArbol item){
+            if(nodo==NULL) nodo->info = item;                     //Si el arbol está vacio creamos un nodo como raiz
             else{                                                 //Si el arbol tiene un nodo o más
-                int valorRaiz = raiz->info;                       //Obtenemos el valor de la raiz
-                if(item < valorRaiz){                             //Si el nodo es menor a la raiz, lo insertamos en el lado izquierdo
-                    insert(raiz->izq->info, item);
+                int valorNodo = nodo->info;                       //Obtenemos el valor de la raiz
+                if(item < valorNodo){                             //Si el nodo es menor a la raiz, lo insertamos en el lado izquierdo
+                    insertHelp(nodo->izq, item);
                 }
                 else{                                             //Si el nodo es mayor a la raiz, lo insertamos en el lado derecho
-                    insert(raiz->der->info, item);
+                    insertHelp(nodo->der, item);
                 }                
             }
-        }
-
-        void remove(tElemArbol item) {
-
         }
 
         int findHelp(tNodoArbolBin *nodo, tElemArbol item) {
@@ -65,6 +46,28 @@ class tABB {
                 return findHelp(nodo->der, item);
             }
         }
+
+    public:
+        tABB() {
+            raiz = NULL;
+            nElems = 0; 
+        }
+
+        ~tABB() {
+            clear();
+        }
+
+        void clear() {
+            clearHelp(raiz);
+            raiz = NULL;
+            nElems = 0;
+        }
+
+        void insert(tElemArbol item) {
+            insertHelp(raiz, item); 
+        } 
+
+        void remove(tElemArbol item) {}
 
         int find(tElemArbol item) {
             return findHelp(raiz, item);
