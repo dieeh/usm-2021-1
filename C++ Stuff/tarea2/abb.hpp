@@ -47,6 +47,54 @@ class tABB {
             }
         }
 
+        void removeHelp(tNodoArbolBin *nodo, tElemArbol item) {
+            int caso;
+            if(find(item) == 0) return;
+            tNodoArbolBin* aux = search(nodo, item);
+            if (aux->der == NULL && aux->izq == NULL) caso = 1;
+            if ((aux->der != NULL && aux->izq == NULL) || (aux->der == NULL && aux->izq != NULL) ) caso = 2;
+            if (aux->der != NULL && aux->izq != NULL) caso = 3;
+            switch (caso) {
+            case 1: //nodo sin hijos
+                delete aux;
+                break;
+            case 2: //nodo con 1 hijo
+                if(aux->padre->der == aux){
+                    if (aux->der == NULL) {
+                        aux->padre->der = aux->izq;
+                        aux->izq->padre = aux->padre;
+                    }else{
+                        aux->padre->der = aux->der;
+                        aux->der->padre = aux->padre;
+                    }
+                }else{
+                    if (aux->der == NULL) {
+                        aux->padre->izq = aux->izq;
+                        aux->izq->padre = aux->padre;
+                    }else{
+                        aux->padre->izq = aux->der;
+                        aux->der->padre = aux->padre;
+                    }
+                }
+                delete aux;
+                break;
+            case 3: //nodo con 2 hijos
+                bool sucesorAntecesor;
+                int k = 1;
+                while (sucesorAntecesor == false) {
+                    if(find(item - k)) sucesorAntecesor = true;
+                    else{
+                        k++;
+                    }
+                }
+                tElemArbol aux2 = item - k;
+                tNodoArbolBin* aux3 = search(nodo, aux2);
+                aux->info = aux3->info;
+                removeHelp(aux3, aux2);
+                break;
+            }
+        }
+
         int findHelp(tNodoArbolBin *nodo, tElemArbol item) {
             if (nodo == NULL) return 0; 
             if (nodo->info == item) return 1; 
@@ -111,41 +159,8 @@ class tABB {
             insertHelp(raiz, item, NULL); 
         } 
 
-        void remove(tElemArbol item) {
-            int caso;
-            if(find(item) == 0) return;
-            tNodoArbolBin* aux = search(raiz, item);
-            if (aux->der == NULL && aux->izq == NULL) caso = 1;
-            if ((aux->der != NULL && aux->izq == NULL) || (aux->der == NULL && aux->izq != NULL) ) caso = 2;
-            if (aux->der != NULL && aux->izq != NULL) caso = 3;
-            switch (caso) {
-            case 1: //nodo sin hijos
-                delete aux;
-                break;
-            case 2: //nodo con 1 hijo
-                if(aux->padre->der == aux){
-                    if (aux->der == NULL) {
-                        aux->padre->der = aux->izq;
-                        aux->izq->padre = aux->padre;
-                    }else{
-                        aux->padre->der = aux->der;
-                        aux->der->padre = aux->padre;
-                    }
-                }else{
-                    if (aux->der == NULL) {
-                        aux->padre->izq = aux->izq;
-                        aux->izq->padre = aux->padre;
-                    }else{
-                        aux->padre->izq = aux->der;
-                        aux->der->padre = aux->padre;
-                    }
-                }
-                delete aux;
-                break;
-            case 3: //nodo con 2 hijos
-
-                break;
-            }
+        void remove(tElemArbol item){
+            removeHelp(raiz, item);
         }
 
         int find(tElemArbol item) {
