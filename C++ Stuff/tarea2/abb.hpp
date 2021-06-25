@@ -36,7 +36,7 @@ class tABB {
                 nodo->padre = padre;
                 nElems++;
             }else{                                                 //Si el arbol tiene un nodo o más
-                int valorNodo = nodo->info;                       //Obtenemos el valor de la raiz
+                int valorNodo = nodo->info.exponente;                       //Obtenemos el valor de la raiz
                 tNodoArbolBin* aux = nodo;
                 if(item < valorNodo){                             //Si el nodo es menor a la raiz, lo insertamos en el lado izquierdo
                     insertHelp(nodo->izq, item, aux);
