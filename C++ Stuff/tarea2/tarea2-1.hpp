@@ -214,5 +214,13 @@ class polinomio {
                 }
             }
         }
+
+        void insertMon(int coef, unsigned int exp){
+            monomio a;
+            a.exponente = exp;
+            a.coeficiente = coef;
+            polinomioTotal.insert(a);
+            cantidad++;
+        }
 };
 
