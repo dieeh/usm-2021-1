@@ -7,7 +7,7 @@
 using namespace std;
 
 int main() {
-    fstream file;
+    fstream file, output2;
     string cantidad, aux2, tempA, tempB, aux4;
     int aux, aux3, aux5;
     polinomio* arreglo;
@@ -60,6 +60,8 @@ int main() {
         
     }
     file.close();
-    cout << output << endl;
+    output2.open("salidaPolinomios.txt", ios::out);
+    output2 << output;
+    output2.close();
     return 0;
 }
