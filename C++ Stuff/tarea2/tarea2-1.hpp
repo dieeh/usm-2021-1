@@ -198,7 +198,7 @@ class polinomio {
             }
             
         float evaluar(float x){
-            float resultado = 0, aux, aux2 = 0;
+            float resultado = 0, aux;
             int aux4;
             unsigned int aux3 = polinomioTotal.getValue().exponente;
             polinomioTotal.sort();
@@ -210,28 +210,9 @@ class polinomio {
                     return resultado;
                 }else{
                     resultado = aux * x;
+                    aux3--;
                 }
-                aux3--;
             }
-            return resultado;
-
-                
-
-            //for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()){
-            //    aux = x;
-            //    unsigned int aux2 = polinomioTotal.getValue().exponente;
-            //    if ( polinomioTotal.getValue().exponente == 0) {
-            //        aux = 1;
-            //    }else{
-            //        for (int j = 1; j < polinomioTotal.getValue().exponente; j++) {
-            //            aux *= x;
-            //        }
-            //    }
-            //    aux *= polinomioTotal.getValue().coeficiente;
-            //    resultado += aux;
-            //}
-            //return resultado;
         }
-
 };
 
