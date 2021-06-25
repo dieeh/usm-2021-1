@@ -2,7 +2,7 @@
 
 using namespace std;
 
-typedef int tElemArbol; //Definir dependiendo de la tarea
+typedef monomio tElemArbol; //Definir dependiendo de la tarea
 
 //Falta la funcion procesar
 //No le encuentro un uso a la funcion tdvia asi que se deja como está
