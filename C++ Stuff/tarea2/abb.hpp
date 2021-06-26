@@ -18,12 +18,13 @@ class tABB {
         /*****
         *   void clearHelp
         *****
-        *   Elimina todos los elementos del ABB   
+        *   Función recursiva que elimina todos los nodos del ABB, dejandolo vacío 
         *****
         *   Input:
-                tNodoArbolBin: 
+                tNodoArbolBin: Puntero a los nodos perteneciente al árbol
         *****
-        *   
+        *   Returns:
+                void, Borra todos los subarboles y se elimina a si mismo, dejandolo vacío
         *****/
         void clearHelp(tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
@@ -34,11 +35,15 @@ class tABB {
         /*****
         *   void insertHelp
         *****
-        *   
+        *   Función que inserta nodos en el árbol, o crea el árbol e insertar nodos
         *****
-        *
+        *   Input:
+                tNodoArbolBin: Un puntero hacía nodos. 
+                tElemArbol: Elemento o información que se desea agregar al árbol
+                tNodoArbolBin: Puntero hacía el nodo padre (raíz)
         *****
-        *   
+        *   Return: 
+               xd 
         *****/
         void insertHelp(tNodoArbolBin *nodo, tElemArbol item, tNodoArbolBin *padre){
             if(nodo==NULL) {
@@ -60,11 +65,14 @@ class tABB {
         /*****
         *   void removeHelp
         *****
-        *   Remueve nodos de la función, tanto como este no tenga, tenga 1 hijo o tenga 2 hijos.   
+        *   Función que remueve nodos del árbol, tanto como este no tenga, tenga 1 o tenga 2 hijos.   
         *****
-        *
+        *   Input:
+                tNodoArbolBin: Un puntero hacía nodos. 
+                tElemArbol: Elemento o información que se desea agregar al árbol   
         *****
-        *   
+        *   Return:
+
         *****/
         void removeHelp(tNodoArbolBin *nodo, tElemArbol item) {
             int caso;
@@ -118,11 +126,15 @@ class tABB {
         /*****
         *   int findHelp
         *****
-        *   Busca un nodo en el ABB, retorna 0 en caso de no encontrar ninguno   
+        *   Busca un nodo en el ABB, retorna 0 en caso de no encontrar ninguno   .
         *****
-        *
+        *   Input:
+                tNodoArbolBin: Un puntero hacía nodos. 
+                tElemArbol: Elemento o información que se desea agregar al árbol.
         *****
-        *   
+        *   Return:
+                int, retorna la información que se encuentra en el nodo encontrado.
+
         *****/
         int findHelp(tNodoArbolBin *nodo, tElemArbol item) {
             if (nodo == NULL) return 0;                                        
@@ -137,11 +149,14 @@ class tABB {
         /*****
         *   void inOrdenHelp
         *****
-        *   Recorre el ABB de forma in-orden   
+        *   Recorre el ABB de forma in-orden, visitando el hijo izquierdo, procesando el nodo y visitando el hijo derecho.  
         *****
-        *
+        *   Input:
+                tNodoArbolBin: Un puntero hacía nodos. 
+                tElemArbol: Elemento o información que se desea agregar al árbol
         *****
-        *   
+        *   Return:
+                   
         *****/
         void inOrdenHelp (tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
