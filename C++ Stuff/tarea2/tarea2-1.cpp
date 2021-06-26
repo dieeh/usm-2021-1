@@ -49,7 +49,7 @@ int main() {
             aux5 = stoi(tempA);
             float aux6 = stof(tempB);
             aux2 = to_string(arreglo[aux5].evaluar(aux6));
-            for (int k = 0; k < aux2.length(); k++) {
+            for (unsigned int k = 0; k < aux2.length(); k++) {
                 if(aux2[k] == '.'){
                     aux2 = aux2.substr(0, k+3);
                 }

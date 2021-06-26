@@ -244,13 +244,13 @@ class tLista {
         * Esta función lleva el current a una posición requerida
         ******
         * Input:
-        *   unsigned int posicion: La posición a la que queremos desplazar el indicador
+        *    int posicion: La posición a la que queremos desplazar el indicador
         ******
         * Returns:
         *   void, no retorna nada, puesto que solo mueve el indicador 
         *****/
-        void moveToPos(unsigned int posicion) {
-            unsigned int i;
+        void moveToPos(int posicion) {
+            int i;
             if ((posicion < 0) || (posicion > listSize)) return;
             curr = head;
             pos = 0;
@@ -379,7 +379,7 @@ class polinomio {
             int aux4;
             unsigned int aux3 = polinomioTotal.getValue().exponente;
             polinomioTotal.sort();
-            for (polinomioTotal.moveToStart() ; aux3 >= 0; polinomioTotal.next()){
+            for (polinomioTotal.moveToStart() ; true ; polinomioTotal.next()){
                 aux4 = coeficiente(aux3);
                 aux = aux4 + resultado;
                 if (aux3 == 0){

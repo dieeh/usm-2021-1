@@ -52,14 +52,15 @@ class tABB {
         *   Return: 
         *      No retorna nada, ya que solo agrega nodos al árbol
         *****/
-        void insertHelp(tNodoArbolBin *nodo, tElemArbol item, tNodoArbolBin *padre){
+        void insertHelp(tNodoArbolBin *&nodo, tElemArbol item, tNodoArbolBin *padre){
             if(nodo==NULL) {
                 nodo = new tNodoArbolBin;
                 nodo->info = item;                                 
                 nodo->padre = padre;
+                nodo->izq = nodo->der = NULL;
                 nElems++;
             }else{                                               
-                int valorNodo = nodo->info.exponente;                       
+                unsigned int valorNodo = nodo->info.exponente;                       
                 tNodoArbolBin* aux = nodo;
                 if(item.exponente < valorNodo){                              
                     insertHelp(nodo->izq, item, aux);
@@ -402,13 +403,14 @@ class tABB {
 
 class polinomio {
     private:
-        tABB polinomioTotal;
         int cantidad;
+        tABB polinomioTotal;
 
     public:
         polinomio(){
             cantidad = 0;
             tABB polinomioTotal;
+
         }
 
         ~polinomio(){
