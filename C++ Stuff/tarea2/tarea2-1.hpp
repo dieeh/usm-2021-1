@@ -19,7 +19,7 @@ class tLista {
         tNodo* head;
         tNodo* tail;
         tNodo* curr;
-        unsigned int listSize;
+        int listSize;
         unsigned int pos;
     public:
         tLista() {

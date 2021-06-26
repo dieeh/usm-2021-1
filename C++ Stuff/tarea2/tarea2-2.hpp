@@ -226,13 +226,15 @@ class tABB {
         *   Return:
         *       Retorna un puntero hacía el nodo encontrado
         *****/
-        tNodoArbolBin* searchHelp(tNodoArbolBin *nodo, unsigned int exponente){
-            if (nodo->info.exponente == exponente) return nodo; 
+        tNodoArbolBin* searchHelp(tNodoArbolBin *nodo, unsigned int exponente){   
+            if (nodo->info.exponente == exponente) {
+                return nodo;
+            }
             if (exponente < nodo->info.exponente) {
-                searchHelp(nodo->izq, exponente);
+                return searchHelp(nodo->izq, exponente);
             }
             else {
-                searchHelp(nodo->der, exponente);
+                return searchHelp(nodo->der, exponente);
             }
         }
 
@@ -474,7 +476,7 @@ class polinomio {
             polinomioTotal.inOrden(A, cantidad);
 
             unsigned int aux3 = A[cantidad].exponente;
-            for (unsigned int i = aux3; aux3 >= 0; i--) {
+            for (unsigned int i = aux3; true; i--) {
                 aux4 = coeficiente(aux3);
                 aux = aux4 + resultado;
                 if (aux3 == 0){
