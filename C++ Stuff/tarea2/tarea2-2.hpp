@@ -85,7 +85,7 @@ class tABB {
         void removeHelp(tNodoArbolBin *nodo, tElemArbol item) {
             int caso;
             if(find(item.exponente) == 0) return;                                                                                
-            tNodoArbolBin* aux = search(nodo, item);
+            tNodoArbolBin* aux = searchHelp(nodo, item.exponente);
             if (aux->der == NULL && aux->izq == NULL) caso = 1;
             if ((aux->der != NULL && aux->izq == NULL) || (aux->der == NULL && aux->izq != NULL) ) caso = 2;
             if (aux->der != NULL && aux->izq != NULL) caso = 3;
@@ -126,7 +126,7 @@ class tABB {
                 }
                 tElemArbol aux2;
                 aux2.exponente = item.exponente - k;
-                tNodoArbolBin* aux3 = search(nodo, aux2);
+                tNodoArbolBin* aux3 = searchHelp(nodo, aux2.exponente);
                 aux->info = aux3->info;
                 removeHelp(aux3, aux2);
                 break;
@@ -213,7 +213,7 @@ class tABB {
         }
 
         /*****
-        *   tNodoArbolBin* tABB::search
+        *   tNodoArbolBin* tABB::searchHelp
         *****
         *   
         *****
@@ -224,13 +224,13 @@ class tABB {
         *   Return:
         *       Retorna un puntero hacía el nodo encontrado
         *****/
-        tNodoArbolBin* search(tNodoArbolBin *nodo, tElemArbol item){
-            if (nodo->info.exponente == item.exponente) return nodo; 
-            if (item.exponente < nodo->info.exponente) {
-                search(nodo->izq, item);
+        tNodoArbolBin* searchHelp(tNodoArbolBin *nodo, unsigned int exponente){
+            if (nodo->info.exponente == exponente) return nodo; 
+            if (exponente < nodo->info.exponente) {
+                searchHelp(nodo->izq, exponente);
             }
             else {
-                search(nodo->der, item);
+                searchHelp(nodo->der, exponente);
             }
         }
 
@@ -317,6 +317,22 @@ class tABB {
         *****/
         int find(unsigned int exponente) {
             return findHelp(raiz, exponente);
+        }
+
+        /*****
+        *   tNodoArbolBin* tABB::searchHelp
+        *****
+        *   
+        *****
+        *   Input:
+        *       tNodoArbolBin: Un puntero hacía nodos
+        *       tElemArbol: Elemento o información que se desea agregar al árbol
+        *****
+        *   Return:
+        *       Retorna un puntero hacía el nodo encontrado
+        *****/
+        tNodoArbolBin* search(unsigned int item){
+            return searchHelp(raiz, item);
         }
 
         /*****
@@ -411,7 +427,7 @@ class polinomio {
             monomio a;
             a.exponente = exp;
             a.coeficiente = coef;
-            polinomioTotal.append(a);
+            polinomioTotal.insert(a);
             cantidad++;
         }
 
@@ -427,12 +443,11 @@ class polinomio {
         *   int, retorna el coeficiente del monomio encontrado
         *****/
         int coeficiente(unsigned int exponente){
-            for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()) {
-                if (polinomioTotal.getValue().exponente == exponente){
-                    return polinomioTotal.getValue().coeficiente;
-                }
+            if (polinomioTotal.find(exponente) != 0){
+                return polinomioTotal.search(exponente)->info.coeficiente;
+            }else{
+                return 0;
             }
-            return 0;
             }
 
         /*****
@@ -449,7 +464,7 @@ class polinomio {
         float evaluar(float x){
             float resultado = 0, aux;
             int aux4;
-            unsigned int aux3 = polinomioTotal.getValue().exponente;
+            unsigned int aux3 = polinomioTotal.().exponente;
             polinomioTotal.sort();
             for (polinomioTotal.moveToStart() ; aux3 >= 0; polinomioTotal.next()){
                 aux4 = coeficiente(aux3);
