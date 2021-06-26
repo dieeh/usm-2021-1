@@ -2,7 +2,7 @@
 
 using namespace std;
 
-typedef int tElemArbol; //Definir dependiendo de la tarea
+typedef int tElemArbol;
 
 struct tNodoArbolBin{
     tElemArbol info;
