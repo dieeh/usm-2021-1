@@ -42,7 +42,7 @@ class tLista {
         }
 
         /*****
-        * void clear
+        * void tLista::clear
         ******
         * Esta función reinicializa la lista, dejandola como vacía nuevamente y borrando toda la información que tenia guardada antes
         ******
@@ -66,7 +66,7 @@ class tLista {
         }
         
         /*****
-        * int insert
+        * int tLista::insert
         ******
         * Esta función inserta información a la lista en la posición que se encuentra el current
         ******
@@ -87,7 +87,7 @@ class tLista {
         }
 
         /*****
-        * int append
+        * int tLista::append
         ******
         * Esta función inserta información a la lista pero en la ultima posición, es decir, agrega elementos en la cola
         ******
@@ -111,7 +111,7 @@ class tLista {
         }
 
         /*****
-        * tElemLista erase
+        * tElemLista tLista::erase
         ******
         * Esta función borra el elemento que se encuentra en la posición current
         ******
@@ -139,7 +139,7 @@ class tLista {
         }
 
         /*****
-        * void moveToStart
+        * void tLista::moveToStart
         ******
         * Esta función lleva el current al inicio de la lista, es decir, a la cabeza.
         ******
@@ -155,7 +155,7 @@ class tLista {
         }
 
         /*****
-        * void moveToEnd
+        * void tLista::moveToEnd
         ******
         * Esta función lleva el current al final de la lista, es decir, a la cola.
         ******
@@ -171,7 +171,7 @@ class tLista {
         }
 
         /*****
-        * void next
+        * void tLista::next
         ******
         * Esta función lleva el current al siguiente elemento en la lista, nuestro indicador apunta al siguiente.
         ******
@@ -189,7 +189,7 @@ class tLista {
         }
 
         /*****
-        * void prev
+        * void tLista::prev
         ******
         * Esta función lleva el current al elemento anterior en la lista, nuestro indicador apunta uno atras.
         ******
@@ -209,7 +209,7 @@ class tLista {
         }
 
         /*****
-        * int lenght
+        * int tLista::lenght
         ******
         * Esta función nos entrega el total de elementos que hay en la lista.
         ******
@@ -224,7 +224,7 @@ class tLista {
         }
 
         /*****
-        * int currPos
+        * int tLista::currPos
         ******
         * Esta función nos indica en que posición se encuentra nuestro indicador
         ******
@@ -239,7 +239,7 @@ class tLista {
         }
 
         /*****
-        * void moveToPos
+        * void tLista::moveToPos
         ******
         * Esta función lleva el current a una posición requerida
         ******
@@ -261,7 +261,7 @@ class tLista {
         }
 
         /*****
-        * tElemLista getValue
+        * tElemLista tLista::getValue
         ******
         * Esta función nos entrega la información que esta apuntando el indicador actual
         ******
@@ -278,7 +278,7 @@ class tLista {
         }    
 
         /*****
-        * void sort
+        * void tLista::sort
         ******
         * Esta función ordena los elementos de la lista, en este caso, según su exponente de mayor a menor
         ******
@@ -324,7 +324,7 @@ class polinomio {
             }
 
         /*****
-        * void appendMon
+        * void polinomio::appendMon
         ******
         * Esta función va agregando monomios a una lista, a cada posición de la lista le asigna 2 campos, un exponente y un coeficiente, incrementando el tamaño de la lista
         ******
@@ -344,7 +344,7 @@ class polinomio {
         }
 
         /*****
-        * void coeficiente 
+        * void polinomio::coeficiente 
         ******
         * Esta función busca entre los monomios guardados en una lista, alguno que tenga un exponente dado
         ******
@@ -364,7 +364,7 @@ class polinomio {
             }
 
         /*****
-        * float evaluar
+        * float polinomio::evaluar
         ******
         * Esta función evalua un número en el polinomio guardado en una lista
         ******
