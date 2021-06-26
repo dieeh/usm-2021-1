@@ -130,7 +130,7 @@ class tLista {
 
         void moveToPos(unsigned int posicion) {
             unsigned int i;
-            if (posicion < 0 || posicion > listSize) return;
+            if ((posicion < 0) || (posicion > listSize)) return;
             curr = head;
             pos = 0;
             for (i = 0; i < posicion; i++) {
