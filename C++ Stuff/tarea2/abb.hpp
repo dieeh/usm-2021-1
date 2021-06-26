@@ -24,7 +24,7 @@ class tABB {
                 tNodoArbolBin: Puntero a los nodos perteneciente al árbol
         *****
         *   Returns:
-                void, Borra todos los subarboles y se elimina a si mismo, dejandolo vacío
+                void, No retorna ya que borra todos los subarboles y se elimina a si mismo, dejandolo vacío
         *****/
         void clearHelp(tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
@@ -43,7 +43,7 @@ class tABB {
                 tNodoArbolBin: Puntero hacía el nodo padre (raíz)
         *****
         *   Return: 
-               xd 
+               No retorna nada, ya que solo agrega nodos al árbol
         *****/
         void insertHelp(tNodoArbolBin *nodo, tElemArbol item, tNodoArbolBin *padre){
             if(nodo==NULL) {
@@ -72,7 +72,7 @@ class tABB {
                 tElemArbol: Elemento o información que se desea agregar al árbol   
         *****
         *   Return:
-
+                No retorna, ya que solo elimina nodos, subarboles o árboles
         *****/
         void removeHelp(tNodoArbolBin *nodo, tElemArbol item) {
             int caso;
@@ -149,13 +149,13 @@ class tABB {
         /*****
         *   void inOrdenHelp
         *****
-        *   Recorre el ABB de forma in-orden, visitando el hijo izquierdo, procesando el nodo y visitando el hijo derecho.  
+        *   Recorre el ABB de forma in-orden, visitando el hijo izquierdo, visita el nodo y visitando el hijo derecho.  
         *****
         *   Input:
                 tNodoArbolBin: Un puntero hacía nodos. 
-                tElemArbol: Elemento o información que se desea agregar al árbol
         *****
         *   Return:
+                No retorna, solo recorre el árbol
                    
         *****/
         void inOrdenHelp (tNodoArbolBin *nodo) {
@@ -167,11 +167,13 @@ class tABB {
         /*****
         *   void preOrdenHelp
         *****
-        *   Recorre el ABB de forma pre-orden   
+        *   Recorre el ABB de forma pre-orden, visitando el nodo actual, visita el hijo izquierdo y visita el hijo derecho   
         *****
-        *
+        *   Input:
+                tNodoArbolBin: Un puntero hacía nodos. 
         *****
-        *   
+        *   Return:
+                No retorna, solo recorre el árbol
         *****/
         void preOrdenHelp (tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
@@ -182,11 +184,13 @@ class tABB {
         /*****
         *   void postOrdenHelp   
         *****
-        *   Recorre el ABB de forma post-orden  
+        *   Recorre el ABB de forma post-orden, visita el hijo izquierdo, visita el hijo derecho y visita el nodo actual  
         *****
-        *
+        *   Input:
+                tNodoArbolBin: Un puntero hacía nodos. 
         *****
-        *   
+        *   Return:
+                No retorna, solo recorre el árbol
         *****/
         void postOrdenHelp (tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
@@ -199,9 +203,12 @@ class tABB {
         *****
         *   
         *****
-        *
+        *   Input:
+                tNodoArbolBin: Un puntero hacía nodos
+                tElemArbol: Elemento o información que se desea agregar al árbol
         *****
-        *   
+        *   Return:
+                Retorna un puntero hacía el nodo encontrado
         *****/
         tNodoArbolBin* search(tNodoArbolBin *nodo, tElemArbol item){
             if (nodo->info == item) return nodo; 
@@ -213,13 +220,15 @@ class tABB {
             }
         }
         /*****
-        *
+        *   void procesar
         *****
-        *   
+        *   Esta función no se utiliza, por ahora.
         *****
-        *
+        *   Input:
+                tElemArbol: Elemento o información que se desea agregar al árbol
         *****
-        *   
+        *   Return:
+                No retorna nada, por ahora.
         *****/
         void procesar(tElemArbol item) {}
 
@@ -232,37 +241,117 @@ class tABB {
         ~tABB() {
             clearHelp(raiz);
         }
-
+        /*****
+        *   void clear
+        *****
+        *   Función que llama a la función clearHelp
+        *****
+        *   Input:
+                No posee input
+        *****
+        *   Returns:
+                No retorna ya que borra todos los subarboles y se elimina a si mismo, dejandolo vacío
+        *****/
         void clear() {
             clearHelp(raiz);
             raiz = NULL;
             nElems = 0;
         }
-
+        /*****
+        *   void insert
+        *****
+        *   Función que llama a la función insertHelp
+        *****
+        *   Input:
+                tElemArbol: Elemento o información que se desea agregar al árbol        
+        *****
+        *   Returns:
+                No retorna
+        *****/
         void insert(tElemArbol item) {
             insertHelp(raiz, item, NULL); 
         } 
-
+        /*****
+        *   void remove
+        *****
+        *   Función que llama a la función removeHelp
+        *****
+        *   Input:
+                tElemArbol: Elemento o información que se desea agregar al árbol        
+        *****
+        *   Returns:
+                No retorna
+        *****/
         void remove(tElemArbol item){
             removeHelp(raiz, item);
         }
-
+        /*****
+        *   int find
+        *****
+        *   Función que llama a la función findtHelp
+        *****
+        *   Input:
+                tElemArbol: Elemento o información que se desea agregar al árbol        
+        *****
+        *   Returns:
+                int, retorna la información que se encuontró en findHelp
+        *****/
         int find(tElemArbol item) {
             return findHelp(raiz, item);
         }
-
+        /*****
+        *   int findsize
+        *****
+        *   Función que retorna la cantidad de elementos pertenecientes al árbol
+        *****
+        *   Input:
+                No posee inputs        
+        *****
+        *   Returns:
+                int, Retorna la cantidad de elementos que hay en el ABB
+        *****/
         int size() {
             return nElems;
         }
-
+        /*****
+        *   void inOrden
+        *****
+        *   Función que llama a la función inOrdenHelp
+        *****
+        *   Input:
+                No posee inputs      
+        *****
+        *   Returns:
+                No retorna, solo recorre el ABB de formar in-orden
+        *****/
         void inOrden() {
             inOrdenHelp (raiz);
         }
-
+        /*****
+        *   void preOrden
+        *****
+        *   Función que llama a la función preOrdenHelp
+        *****
+        *   Input:
+                No posee inputs      
+        *****
+        *   Returns:
+                No retorna, solo recorre el ABB de formar pre-orden
+        *****/
         void preOrden() {
             preOrdenHelp (raiz);
         }
-
+        /*****
+        *   void postOrden
+        *****
+        *   Función que llama a la función postOrdenHelp
+        *****
+        *   Input:
+                No posee inputs      
+        *****
+        *   Returns:
+                No retorna, solo recorre el ABB de formar post-orden
+        *****/
         void postOrden() {
             postOrdenHelp (raiz);
         }
