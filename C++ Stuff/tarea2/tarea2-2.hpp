@@ -413,7 +413,7 @@ class polinomio {
 
         ~polinomio(){
             polinomioTotal.clear();
-            }
+        }
 
         /*****
         * void polinomio::appendMon
@@ -452,7 +452,7 @@ class polinomio {
             }else{
                 return 0;
             }
-            }
+        }
 
         /*****
         * float polinomio::evaluar
@@ -468,28 +468,22 @@ class polinomio {
         float evaluar(float x){
             float resultado = 0, aux;
             tElemArbol A[polinomioTotal.size()];
-            int cantidad = 0;
+            int aux4, cantidad = 0;
             polinomioTotal.inOrden(A, cantidad);
 
             unsigned int aux3 = A[cantidad].exponente;
-
-
-
-           // float resultado = 0, aux;
-           // int aux4;
-           // unsigned int aux3 = polinomioTotal.().exponente;
-           // polinomioTotal.sort();
-           // for (polinomioTotal.moveToStart() ; aux3 >= 0; polinomioTotal.next()){
-           //     aux4 = coeficiente(aux3);
-           //     aux = aux4 + resultado;
-           //     if (aux3 == 0){
-           //         resultado = aux;
-           //         return resultado;
-           //     }else{
-           //         resultado = aux * x;
-           //         aux3--;
-           //     }
-           // }
+            for (unsigned int i = aux3; aux3 >= 0; i--) {
+                aux4 = coeficiente(aux3);
+                aux = aux4 + resultado;
+                if (aux3 == 0){
+                    resultado = aux;
+                    return resultado;
+                }else{
+                    resultado = aux * x;
+                    aux3--;
+                }
+            }
         }
 };
+
 
