@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <cmath>
 #include "tarea2-1.hpp"
 
 using namespace std;

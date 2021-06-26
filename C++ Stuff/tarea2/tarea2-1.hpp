@@ -195,7 +195,7 @@ class polinomio {
                 }
             }
             return 0;
-            }
+        }
             
         float evaluar(float x){
             float resultado = 0, aux;
