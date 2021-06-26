@@ -41,6 +41,17 @@ class tLista {
             }
         }
 
+        /*****
+        * void clear
+        ******
+        * Esta función reinicializa la lista, dejandola como vacía nuevamente y borrando toda la información que tenia guardada antes
+        ******
+        * Input:
+        * No tiene parametros, solo actualiza la estructura
+        ******
+        * Returns:
+        * void, no retorna nada, puesto que elimina todo
+        *****/
         void clear() {
             tNodo* elim;
             tNodo* aux = head;
@@ -53,7 +64,18 @@ class tLista {
             listSize = 0;
             pos = 0;
         }
-
+        
+        /*****
+        * int insert
+        ******
+        * Esta función inserta información a la lista en la posición que se encuentra el current
+        ******
+        * Input:
+        * tElemLista: El elemento o información que se desea agregar a la lista
+        ******
+        * Returns:
+        * int, retorna la posición en la lista donde se se inserto el elemento
+        *****/
         int insert(tElemLista item) {
             tNodo* aux = curr->sig;
             curr->sig = new tNodo;
@@ -64,6 +86,17 @@ class tLista {
             return pos;
         }
 
+        /*****
+        * int append
+        ******
+        * Esta función inserta información a la lista pero en la ultima posición, es decir, agrega elementos en la cola
+        ******
+        * Input:
+        * tElemLista: El elemento o información que se desea agregar a la lista
+        ******
+        * Returns:
+        * int, retorna la posición en la lista donde se se inserto el elemento
+        *****/
         int append(tElemLista item) {
             while (curr != tail) {
                 curr = curr->sig;
@@ -77,6 +110,17 @@ class tLista {
             return pos;   
         }
 
+        /*****
+        * tElemLista erase
+        ******
+        * Esta función borra el elemento que se encuentra en la posición current
+        ******
+        * Input:
+        * No tiene parametros, solo actualiza la estructura
+        ******
+        * Returns:
+        * tElemLista, retorna la información del elemento eliminado
+        *****/
         tElemLista erase() {
             tElemLista a;
             if (curr == tail) {
@@ -94,16 +138,49 @@ class tLista {
             }
         }
 
+        /*****
+        * void moveToStart
+        ******
+        * Esta función lleva el current al inicio de la lista, es decir, a la cabeza.
+        ******
+        * Input:
+        * No tiene parametros, solo cambia la posición de nuestro indicador
+        ******
+        * Returns:
+        * void, no retorna nada, puesto que solo mueve el indicador 
+        *****/
         void moveToStart() {
             curr = head; 
             pos = 0; 
         }
 
+        /*****
+        * void moveToEnd
+        ******
+        * Esta función lleva el current al final de la lista, es decir, a la cola.
+        ******
+        * Input:
+        * No tiene parametros, solo cambia la posición de nuestro indicador
+        ******
+        * Returns:
+        * void, no retorna nada, puesto que solo mueve el indicador 
+        *****/
         void moveToEnd() {
             curr = tail;
             pos = listSize -1;
         }
 
+        /*****
+        * void next
+        ******
+        * Esta función lleva el current al siguiente elemento en la lista, nuestro indicador apunta al siguiente.
+        ******
+        * Input:
+        * No tiene parametros, solo cambia la posición de nuestro indicador
+        ******
+        * Returns:
+        * void, no retorna nada, puesto que solo mueve el indicador 
+        *****/
         void next() { 
             if (curr != tail) { 
                 curr = curr->sig; 
@@ -111,6 +188,17 @@ class tLista {
             } 
         }
 
+        /*****
+        * void prev
+        ******
+        * Esta función lleva el current al elemento anterior en la lista, nuestro indicador apunta uno atras.
+        ******
+        * Input:
+        * No tiene parametros, solo cambia la posición de nuestro indicador
+        ******
+        * Returns:
+        * void, no retorna nada, puesto que solo mueve el indicador 
+        *****/
         void prev() {
             tNodo* temp;
             if (curr == head) return;
@@ -120,14 +208,47 @@ class tLista {
             pos--;
         }
 
+        /*****
+        * int lenght
+        ******
+        * Esta función nos entrega el total de elementos que hay en la lista.
+        ******
+        * Input:
+        * No tiene parametros, solo nos entrega información de la lista
+        ******
+        * Returns:
+        * int, retorna el número de elementos de la lista
+        *****/
         int lenght() {
             return listSize;
         }
 
+        /*****
+        * int currPos
+        ******
+        * Esta función nos indica en que posición se encuentra nuestro indicador
+        ******
+        * Input:
+        * No tiene parametros, solo nos entrega información de la lista
+        ******
+        * Returns:
+        * int, retorna la posición del current
+        *****/
         int currPos() {
             return pos;
         }
 
+        /*****
+        * void moveToPos
+        ******
+        * Esta función lleva el current a una posición requerida
+        ******
+        * Input:
+        * unsigned int posicion: La posición a la que queremos desplazar el indicador
+        ******
+        * Returns:
+        * void, no retorna nada, puesto que solo mueve el indicador 
+        *****/
         void moveToPos(unsigned int posicion) {
             unsigned int i;
             if ((posicion < 0) || (posicion > listSize)) return;
@@ -195,7 +316,7 @@ class polinomio {
                 }
             }
             return 0;
-        }
+            }
             
         float evaluar(float x){
             float resultado = 0, aux;
@@ -213,14 +334,6 @@ class polinomio {
                     aux3--;
                 }
             }
-        }
-
-        void insertMon(int coef, unsigned int exp){
-            monomio a;
-            a.exponente = exp;
-            a.coeficiente = coef;
-            polinomioTotal.insert(a);
-            cantidad++;
         }
 };
 
