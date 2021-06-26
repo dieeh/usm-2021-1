@@ -59,9 +59,9 @@ class tABB {
                 nodo->padre = padre;
                 nElems++;
             }else{                                               
-                int valorNodo = nodo->info;                       
+                int valorNodo = nodo->info.exponente;                       
                 tNodoArbolBin* aux = nodo;
-                if(item < valorNodo){                              
+                if(item.exponente < valorNodo){                              
                     insertHelp(nodo->izq, item, aux);
                 }
                 else{                                             
@@ -84,7 +84,7 @@ class tABB {
         *****/
         void removeHelp(tNodoArbolBin *nodo, tElemArbol item) {
             int caso;
-            if(find(item) == 0) return;                                                                                
+            if(find(item.exponente) == 0) return;                                                                                
             tNodoArbolBin* aux = search(nodo, item);
             if (aux->der == NULL && aux->izq == NULL) caso = 1;
             if ((aux->der != NULL && aux->izq == NULL) || (aux->der == NULL && aux->izq != NULL) ) caso = 2;
@@ -119,12 +119,13 @@ class tABB {
                 bool sucesorAntecesor;
                 int k = 1;
                 while (sucesorAntecesor == false) {
-                    if(find(item - k)) sucesorAntecesor = true;
+                    if(find(item.exponente - k)) sucesorAntecesor = true;
                     else{
                         k++;
                     }
                 }
-                tElemArbol aux2 = item - k;
+                tElemArbol aux2;
+                aux2.exponente = item.exponente - k;
                 tNodoArbolBin* aux3 = search(nodo, aux2);
                 aux->info = aux3->info;
                 removeHelp(aux3, aux2);
@@ -145,14 +146,14 @@ class tABB {
         *       int, retorna la información que se encuentra en el nodo encontrado.
         * 
         *****/
-        int findHelp(tNodoArbolBin *nodo, tElemArbol item) {
+        int findHelp(tNodoArbolBin *nodo, unsigned int exponente) {
             if (nodo == NULL) return 0;                                        
-            if (nodo->info == item) return 1;                                  
-            if (item < nodo->info) {
-                return findHelp(nodo->izq, item);
+            if (nodo->info.exponente == exponente) return 1;                                  
+            if (exponente < nodo->info.exponente) {
+                return findHelp(nodo->izq, exponente);
             }
             else {
-                return findHelp(nodo->der, item);
+                return findHelp(nodo->der, exponente);
             }
         }
 
@@ -224,8 +225,8 @@ class tABB {
         *       Retorna un puntero hacía el nodo encontrado
         *****/
         tNodoArbolBin* search(tNodoArbolBin *nodo, tElemArbol item){
-            if (nodo->info == item) return nodo; 
-            if (item < nodo->info) {
+            if (nodo->info.exponente == item.exponente) return nodo; 
+            if (item.exponente < nodo->info.exponente) {
                 search(nodo->izq, item);
             }
             else {
@@ -314,8 +315,8 @@ class tABB {
         *   Returns:
         *       int, retorna la información que se encuontró en findHelp
         *****/
-        int find(tElemArbol item) {
-            return findHelp(raiz, item);
+        int find(unsigned int exponente) {
+            return findHelp(raiz, exponente);
         }
 
         /*****
@@ -381,13 +382,13 @@ class tABB {
 
 class polinomio {
     private:
-        tLista polinomioTotal;
+        tABB polinomioTotal;
         int cantidad;
 
     public:
         polinomio(){
             cantidad = 0;
-            tLista polinomioTotal;
+            tABB polinomioTotal;
         }
 
         ~polinomio(){
