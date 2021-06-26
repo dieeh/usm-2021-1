@@ -7,7 +7,7 @@ struct monomio{
     unsigned int exponente;
 };
 
-typedef monomio tElemLista; //Definir dependiendo de la tarea
+typedef monomio tElemLista; 
 
 struct tNodo{
     tElemLista info; 
@@ -47,10 +47,10 @@ class tLista {
         * Esta función reinicializa la lista, dejandola como vacía nuevamente y borrando toda la información que tenia guardada antes
         ******
         * Input:
-        * No tiene parametros, solo actualiza la estructura
+        *   No tiene parametros, solo actualiza la estructura
         ******
         * Returns:
-        * void, no retorna nada, puesto que elimina todo
+        *   void, no retorna nada, puesto que elimina todo
         *****/
         void clear() {
             tNodo* elim;
@@ -71,10 +71,10 @@ class tLista {
         * Esta función inserta información a la lista en la posición que se encuentra el current
         ******
         * Input:
-        * tElemLista: El elemento o información que se desea agregar a la lista
+        *   tElemLista: El elemento o información que se desea agregar a la lista
         ******
         * Returns:
-        * int, retorna la posición en la lista donde se se inserto el elemento
+        *   int, retorna la posición en la lista donde se se inserto el elemento
         *****/
         int insert(tElemLista item) {
             tNodo* aux = curr->sig;
@@ -92,10 +92,10 @@ class tLista {
         * Esta función inserta información a la lista pero en la ultima posición, es decir, agrega elementos en la cola
         ******
         * Input:
-        * tElemLista: El elemento o información que se desea agregar a la lista
+        *   tElemLista: El elemento o información que se desea agregar a la lista
         ******
         * Returns:
-        * int, retorna la posición en la lista donde se se inserto el elemento
+        *   int, retorna la posición en la lista donde se se inserto el elemento
         *****/
         int append(tElemLista item) {
             while (curr != tail) {
@@ -116,10 +116,10 @@ class tLista {
         * Esta función borra el elemento que se encuentra en la posición current
         ******
         * Input:
-        * No tiene parametros, solo actualiza la estructura
+        *   No tiene parametros, solo actualiza la estructura
         ******
         * Returns:
-        * tElemLista, retorna la información del elemento eliminado
+        *   tElemLista, retorna la información del elemento eliminado
         *****/
         tElemLista erase() {
             tElemLista a;
@@ -144,10 +144,10 @@ class tLista {
         * Esta función lleva el current al inicio de la lista, es decir, a la cabeza.
         ******
         * Input:
-        * No tiene parametros, solo cambia la posición de nuestro indicador
+        *   No tiene parametros, solo cambia la posición de nuestro indicador
         ******
         * Returns:
-        * void, no retorna nada, puesto que solo mueve el indicador 
+        *   void, no retorna nada, puesto que solo mueve el indicador 
         *****/
         void moveToStart() {
             curr = head; 
@@ -160,10 +160,10 @@ class tLista {
         * Esta función lleva el current al final de la lista, es decir, a la cola.
         ******
         * Input:
-        * No tiene parametros, solo cambia la posición de nuestro indicador
+        *   No tiene parametros, solo cambia la posición de nuestro indicador
         ******
         * Returns:
-        * void, no retorna nada, puesto que solo mueve el indicador 
+        *   void, no retorna nada, puesto que solo mueve el indicador 
         *****/
         void moveToEnd() {
             curr = tail;
@@ -176,10 +176,10 @@ class tLista {
         * Esta función lleva el current al siguiente elemento en la lista, nuestro indicador apunta al siguiente.
         ******
         * Input:
-        * No tiene parametros, solo cambia la posición de nuestro indicador
+        *   No tiene parametros, solo cambia la posición de nuestro indicador
         ******
         * Returns:
-        * void, no retorna nada, puesto que solo mueve el indicador 
+        *   void, no retorna nada, puesto que solo mueve el indicador 
         *****/
         void next() { 
             if (curr != tail) { 
@@ -194,10 +194,10 @@ class tLista {
         * Esta función lleva el current al elemento anterior en la lista, nuestro indicador apunta uno atras.
         ******
         * Input:
-        * No tiene parametros, solo cambia la posición de nuestro indicador
+        *   No tiene parametros, solo cambia la posición de nuestro indicador
         ******
         * Returns:
-        * void, no retorna nada, puesto que solo mueve el indicador 
+        *   void, no retorna nada, puesto que solo mueve el indicador 
         *****/
         void prev() {
             tNodo* temp;
@@ -214,10 +214,10 @@ class tLista {
         * Esta función nos entrega el total de elementos que hay en la lista.
         ******
         * Input:
-        * No tiene parametros, solo nos entrega información de la lista
+        *   No tiene parametros, solo nos entrega información de la lista
         ******
         * Returns:
-        * int, retorna el número de elementos de la lista
+        *   int, retorna el número de elementos de la lista
         *****/
         int lenght() {
             return listSize;
@@ -229,10 +229,10 @@ class tLista {
         * Esta función nos indica en que posición se encuentra nuestro indicador
         ******
         * Input:
-        * No tiene parametros, solo nos entrega información de la lista
+        *   No tiene parametros, solo nos entrega información de la lista
         ******
         * Returns:
-        * int, retorna la posición del current
+        *   int, retorna la posición del current
         *****/
         int currPos() {
             return pos;
@@ -244,10 +244,10 @@ class tLista {
         * Esta función lleva el current a una posición requerida
         ******
         * Input:
-        * unsigned int posicion: La posición a la que queremos desplazar el indicador
+        *   unsigned int posicion: La posición a la que queremos desplazar el indicador
         ******
         * Returns:
-        * void, no retorna nada, puesto que solo mueve el indicador 
+        *   void, no retorna nada, puesto que solo mueve el indicador 
         *****/
         void moveToPos(unsigned int posicion) {
             unsigned int i;
@@ -266,10 +266,10 @@ class tLista {
         * Esta función nos entrega la información que esta apuntando el indicador actual
         ******
         * Input:
-        * No tiene parametros, solo nos entrega información de la lista
+        *   No tiene parametros, solo nos entrega información de la lista
         ******
         * Returns:
-        * tElemLista, retorna la información del elemento actual
+        *   tElemLista, retorna la información del elemento actual
         *****/
         tElemLista getValue() {
             tElemLista a;
@@ -283,10 +283,10 @@ class tLista {
         * Esta función ordena los elementos de la lista, en este caso, según su exponente de mayor a menor
         ******
         * Input:
-        * No tiene parametros, solo actualiza la estructura
+        *   No tiene parametros, solo actualiza la estructura
         ******
         * Returns:
-        * void, no retorna nada, puesto que solo ordena los elementos de la lista
+        *   void, no retorna nada, puesto que solo ordena los elementos de la lista
         *****/
         void sort(){
             tNodo *aux, *aux2;
@@ -329,11 +329,11 @@ class polinomio {
         * Esta función va agregando monomios a una lista, a cada posición de la lista le asigna 2 campos, un exponente y un coeficiente, incrementando el tamaño de la lista
         ******
         * Input:
-        * int coef: Es el campo que indica el coeficiente del monomio, es información relevante que se guarda en la lista
-        * unsigned int exp: Es el campo que indica el exponente del monomio, es información relevante que se guarda en la lista
+        *   int coef: Es el campo que indica el coeficiente del monomio, es información relevante que se guarda en la lista
+        *   unsigned int exp: Es el campo que indica el exponente del monomio, es información relevante que se guarda en la lista
         ******
         * Returns:
-        * void, no retorna nada, pero agrega información a la estructura
+        *   void, no retorna nada, pero agrega información a la estructura
         *****/
         void appendMon(int coef, unsigned int exp){
             monomio a;
@@ -349,10 +349,10 @@ class polinomio {
         * Esta función busca entre los monomios guardados en una lista, alguno que tenga un exponente dado
         ******
         * Input:
-        * unsigned int exponente: Es el exponente del monomio que se requiere encontrar
+        *   unsigned int exponente: Es el exponente del monomio que se requiere encontrar
         ******
         * Returns:
-        * int, retorna el coeficiente del monomio encontrado
+        *   int, retorna el coeficiente del monomio encontrado
         *****/
         int coeficiente(unsigned int exponente){
             for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()) {
@@ -369,10 +369,10 @@ class polinomio {
         * Esta función evalua un número en el polinomio guardado en una lista
         ******
         * Input:
-        * float x: Es el valor de x que se desea evaluar
+        *   float x: Es el valor de x que se desea evaluar
         ******
         * Returns:
-        * float, retorna el valor final despúes de evaluar en toda la lista o polinomio
+        *   float, retorna el valor final despúes de evaluar en toda la lista o polinomio
         *****/
         float evaluar(float x){
             float resultado = 0, aux;
