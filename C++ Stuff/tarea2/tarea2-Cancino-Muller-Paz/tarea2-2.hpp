@@ -335,7 +335,7 @@ class tABB {
         }
 
         /*****
-        *   tNodoArbolBin* tABB::searchHelp
+        *   tNodoArbolBin* tABB::search
         *****
         *   Esta función busca un elemento en el arbol 
         *   y retorna el nodo al que pertence

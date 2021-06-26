@@ -1,29 +1,30 @@
 Nicolás Cancino Henriquez, 202004680-8, Paralelo 200
     Programó:
-        - append()
-        - erase()
-        - length()
-        - currPos()
-        - getValue()
-        - size()
-        - postOrden()
+        - tLista::append
+        - tLista::erase
+        - tLista::lenght
+        - tLista::currPos
+        - tLista::getValue
+        - tABB::size
+        - tABB::postOrden
 
 Carlos Müller Navarro, 202004590-9, Paralelo 200
     Programó:
-        - clear()
-        - insert()         (Arbol)
-        - insertHelp()     (Arbol)
-        - remove()
-        - removeHelp()     (Arbol)
-        - preOrden()
+        - tABB::clear
+        - tABB::insert
+        - tABB::insertHelp
+        - tABB::remove
+        - tABB::removeHelp
+        - tABB::preOrden
+        - tABB::inOrden
 
 Diego Paz Letelier, 202004502-k, Paralelo 200
     Programó:
-        - sort()
-        - appendMon()      (Listas)
-        - coeficiente()    (Listas)
-        - evaluar()        (Listas)
-        - search()
-        - appendMon()      (Arbol)
-        - coeficiente()    (Arbol)
-        - evaluar()        (Arbol)
+        - tLista::sort
+        - tLista::appendMon
+        - tLista::coeficiente
+        - tLista::evaluar
+        - tABB::searchHelp
+        - tABB::appendMon
+        - tABB::coeficiente
+        - tABB::evaluar
