@@ -260,12 +260,34 @@ class tLista {
             }
         }
 
+        /*****
+        * tElemLista getValue
+        ******
+        * Esta función nos entrega la información que esta apuntando el indicador actual
+        ******
+        * Input:
+        * No tiene parametros, solo nos entrega información de la lista
+        ******
+        * Returns:
+        * tElemLista, retorna la información del elemento actual
+        *****/
         tElemLista getValue() {
             tElemLista a;
             a = curr->sig->info;
             return a;
         }    
 
+        /*****
+        * void sort
+        ******
+        * Esta función ordena los elementos de la lista, en este caso, según su exponente de mayor a menor
+        ******
+        * Input:
+        * No tiene parametros, solo actualiza la estructura
+        ******
+        * Returns:
+        * void, no retorna nada, puesto que solo ordena los elementos de la lista
+        *****/
         void sort(){
             tNodo *aux, *aux2;
             tElemLista aux3;
@@ -301,6 +323,18 @@ class polinomio {
             polinomioTotal.clear();
             }
 
+        /*****
+        * void appendMon
+        ******
+        * Esta función va agregando monomios a una lista, a cada posición de la lista le asigna 2 campos, un exponente y un coeficiente, incrementando el tamaño de la lista
+        ******
+        * Input:
+        * int coef: Es el campo que indica el coeficiente del monomio, es información relevante que se guarda en la lista
+        * unsigned int exp: Es el campo que indica el exponente del monomio, es información relevante que se guarda en la lista
+        ******
+        * Returns:
+        * void, no retorna nada, pero agrega información a la estructura
+        *****/
         void appendMon(int coef, unsigned int exp){
             monomio a;
             a.exponente = exp;
@@ -309,6 +343,17 @@ class polinomio {
             cantidad++;
         }
 
+        /*****
+        * void coeficiente 
+        ******
+        * Esta función busca entre los monomios guardados en una lista, alguno que tenga un exponente dado
+        ******
+        * Input:
+        * unsigned int exponente: Es el exponente del monomio que se requiere encontrar
+        ******
+        * Returns:
+        * int, retorna el coeficiente del monomio encontrado
+        *****/
         int coeficiente(unsigned int exponente){
             for (polinomioTotal.moveToStart() ; polinomioTotal.currPos() < cantidad; polinomioTotal.next()) {
                 if (polinomioTotal.getValue().exponente == exponente){
@@ -317,7 +362,18 @@ class polinomio {
             }
             return 0;
             }
-            
+
+        /*****
+        * float evaluar
+        ******
+        * Esta función evalua un número en el polinomio guardado en una lista
+        ******
+        * Input:
+        * float x: Es el valor de x que se desea evaluar
+        ******
+        * Returns:
+        * float, retorna el valor final despúes de evaluar en toda la lista o polinomio
+        *****/
         float evaluar(float x){
             float resultado = 0, aux;
             int aux4;
