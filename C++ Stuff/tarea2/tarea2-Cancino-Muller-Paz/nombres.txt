@@ -1,8 +1,29 @@
 Nicolás Cancino Henriquez, 202004680-8, Paralelo 200
     Programó:
+        - append()
+        - erase()
+        - length()
+        - currPos()
+        - getValue()
+        - size()
+        - postOrden()
 
 Carlos Müller Navarro, 202004590-9, Paralelo 200
     Programó:
+        - clear()
+        - insert()         (Arbol)
+        - insertHelp()     (Arbol)
+        - remove()
+        - removeHelp()     (Arbol)
+        - preOrden()
 
 Diego Paz Letelier, 202004502-k, Paralelo 200
     Programó:
+        - sort()
+        - appendMon()      (Listas)
+        - coeficiente()    (Listas)
+        - evaluar()        (Listas)
+        - search()
+        - appendMon()      (Arbol)
+        - coeficiente()    (Arbol)
+        - evaluar()        (Arbol)
