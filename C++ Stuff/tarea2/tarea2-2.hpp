@@ -169,11 +169,11 @@ class tABB {
         *       No retorna, solo recorre el árbol
         *          
         *****/
-        void inOrdenHelp (tNodoArbolBin *nodo) {
+        void inOrdenHelp (tNodoArbolBin *nodo, tElemArbol* arreglo, int &cantidad) {
             if (nodo == NULL) return;
-            inOrdenHelp (nodo->izq); 
-            procesar(nodo->info);
-            inOrdenHelp (nodo->der); 
+            inOrdenHelp (nodo->izq, arreglo, cantidad); 
+            procesar(nodo->info, arreglo, cantidad);
+            inOrdenHelp (nodo->der, arreglo, cantidad); 
         }
 
         /*****
@@ -187,11 +187,11 @@ class tABB {
         *   Return:
         *       No retorna, solo recorre el árbol
         *****/
-        void preOrdenHelp (tNodoArbolBin *nodo) {
+        void preOrdenHelp (tNodoArbolBin *nodo, tElemArbol* arreglo, int &cantidad) {
             if (nodo == NULL) return;
-            procesar(nodo->info);
-            preOrdenHelp (nodo->izq);
-            preOrdenHelp (nodo->der);
+            procesar(nodo->info, arreglo, cantidad);
+            preOrdenHelp (nodo->izq, arreglo, cantidad);
+            preOrdenHelp (nodo->der, arreglo, cantidad);
         }
 
         /*****
@@ -205,17 +205,18 @@ class tABB {
         *   Return:
         *       No retorna, solo recorre el árbol
         *****/
-        void postOrdenHelp (tNodoArbolBin *nodo) {
+        void postOrdenHelp (tNodoArbolBin *nodo, tElemArbol* arreglo, int &cantidad) {
             if (nodo == NULL) return;
-            postOrdenHelp (nodo->izq);
-            postOrdenHelp (nodo->der);
-            procesar(nodo->info);
+            postOrdenHelp (nodo->izq, arreglo, cantidad);
+            postOrdenHelp (nodo->der, arreglo, cantidad);
+            procesar(nodo->info, arreglo, cantidad);
         }
 
         /*****
         *   tNodoArbolBin* tABB::searchHelp
         *****
-        *   
+        *   Esta función busca un elemento en el arbol 
+        *   y retorna el nodo al que pertence
         *****
         *   Input:
         *       tNodoArbolBin: Un puntero hacía nodos
@@ -245,7 +246,10 @@ class tABB {
         *   Return:
         *       No retorna nada, por ahora.
         *****/
-        void procesar(tElemArbol item) {}
+        void procesar(tElemArbol item, tElemArbol* arreglo, int& cantidad) {
+            arreglo[cantidad] = item;
+            cantidad++;
+        }
 
     public:
         tABB() {
@@ -322,11 +326,11 @@ class tABB {
         /*****
         *   tNodoArbolBin* tABB::searchHelp
         *****
-        *   
+        *   Esta función busca un elemento en el arbol 
+        *   y retorna el nodo al que pertence
         *****
         *   Input:
-        *       tNodoArbolBin: Un puntero hacía nodos
-        *       tElemArbol: Elemento o información que se desea agregar al árbol
+        *       unsigned int item: Elemento que se desea buscar en el árbol
         *****
         *   Return:
         *       Retorna un puntero hacía el nodo encontrado
@@ -361,8 +365,8 @@ class tABB {
         *   Returns:
         *       No retorna, solo recorre el ABB de formar in-orden
         *****/
-        void inOrden() {
-            inOrdenHelp (raiz);
+        void inOrden(tElemArbol* arreglo, int& cantidad) {
+            inOrdenHelp (raiz, arreglo, cantidad);
         }
 
         /*****
@@ -376,8 +380,8 @@ class tABB {
         *   Returns:
         *       No retorna, solo recorre el ABB de formar pre-orden
         *****/
-        void preOrden() {
-            preOrdenHelp (raiz);
+        void preOrden(tElemArbol* arreglo, int &cantidad) {
+            preOrdenHelp (raiz, arreglo, cantidad);
         }
         
         /*****
@@ -391,8 +395,8 @@ class tABB {
         *   Returns:
         *       No retorna, solo recorre el ABB de formar post-orden
         *****/
-        void postOrden() {
-            postOrdenHelp (raiz);
+        void postOrden(tElemArbol* arreglo, int &cantidad) {
+            postOrdenHelp (raiz, arreglo, cantidad);
         }
 };
 
@@ -463,20 +467,29 @@ class polinomio {
         *****/
         float evaluar(float x){
             float resultado = 0, aux;
-            int aux4;
-            unsigned int aux3 = polinomioTotal.().exponente;
-            polinomioTotal.sort();
-            for (polinomioTotal.moveToStart() ; aux3 >= 0; polinomioTotal.next()){
-                aux4 = coeficiente(aux3);
-                aux = aux4 + resultado;
-                if (aux3 == 0){
-                    resultado = aux;
-                    return resultado;
-                }else{
-                    resultado = aux * x;
-                    aux3--;
-                }
-            }
+            tElemArbol A[polinomioTotal.size()];
+            int cantidad = 0;
+            polinomioTotal.inOrden(A, cantidad);
+
+            unsigned int aux3 = A[cantidad].exponente;
+
+
+
+           // float resultado = 0, aux;
+           // int aux4;
+           // unsigned int aux3 = polinomioTotal.().exponente;
+           // polinomioTotal.sort();
+           // for (polinomioTotal.moveToStart() ; aux3 >= 0; polinomioTotal.next()){
+           //     aux4 = coeficiente(aux3);
+           //     aux = aux4 + resultado;
+           //     if (aux3 == 0){
+           //         resultado = aux;
+           //         return resultado;
+           //     }else{
+           //         resultado = aux * x;
+           //         aux3--;
+           //     }
+           // }
         }
 };
 
