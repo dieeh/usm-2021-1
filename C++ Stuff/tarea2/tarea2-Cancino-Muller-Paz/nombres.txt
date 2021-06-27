@@ -21,10 +21,11 @@ Carlos Müller Navarro, 202004590-9, Paralelo 200
 Diego Paz Letelier, 202004502-k, Paralelo 200
     Programó:
         - tLista::sort
-        - tLista::appendMon
-        - tLista::coeficiente
-        - tLista::evaluar
+        - tABB::search
         - tABB::searchHelp
-        - tABB::appendMon
-        - tABB::coeficiente
-        - tABB::evaluar
+        - tABB::procesar
+        - tABB::removeHelp
+        - polinomios::appendMon
+        - polinomios::coeficiente
+        - polinomios::evaluar
+        - Ambos main() en tarea2-1.cpp y tarea2-2.cpp
