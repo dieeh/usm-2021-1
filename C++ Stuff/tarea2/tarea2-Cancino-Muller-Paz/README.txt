@@ -9,4 +9,4 @@ La tarea consiste en 4 archivos:
 tarea2-1 contiene el TDA polinomios implementado con listas enlazadas y el TDA listas enlazadas
 tarea2-2 contiene el TDA polinomios implementado con árboles de busqueda binarios y el TDA árboles de busqueda binarios
 
-Los separamos en 2 pares distintos, puesto que hubo que modificar el main para que funcionase debido a que los TDA tienen distintos métodos.
+Los separamos en 2 pares distintos, puesto que los TDA tienen distintos métodos.

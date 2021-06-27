@@ -166,7 +166,7 @@ class tABB {
         *   Input:
         *       tNodoArbolBin: Un puntero hacía nodo. 
         *       tElemArbol: Un puntero hacía arreglo.
-        *       int &: Obtiene la dirección de memoría de la variable cantidad.
+        *       int &: Pasa por referencia la variable cantidad.
         *****
         *   Return:
         *       No retorna, solo recorre el árbol
@@ -187,7 +187,7 @@ class tABB {
         *   Input:
         *       tNodoArbolBin: Un puntero hacía nodos. 
         *       tElemArbol: Un puntero hacía arreglo.
-        *       int &: Obtiene la dirección de memoría de la variable cantidad.
+        *       int &: Pasa por referencia la variable cantidad.
         *****
         *   Return:
         *       No retorna, solo recorre el árbol
@@ -207,7 +207,7 @@ class tABB {
         *   Input:
         *       tNodoArbolBin: Un puntero hacía nodos.
         *       tElemArbol: Un puntero hacía arreglo.
-        *       int &: Obtiene la dirección de memoría de la variable cantidad. 
+        *       int &: Pasa por referencia la variable cantidad. 
         *****
         *   Return:
         *       No retorna, solo recorre el árbol
@@ -247,15 +247,15 @@ class tABB {
         /*****
         *   void tABB::procesar
         *****
-        *   Esta función no se utiliza, por ahora.
+        *   Añade el item a un arreglo que se le pasa por referencia
         *****
         *   Input:
         *       tElemArbol: Elemento o información que se desea agregar al árbol
         *       tElemArbol: Un puntero hacía la variable arreglo
-        *       int&: Obtiene la dirección de memoría de la variable cantidad.
+        *       int&: Pasa por referencia la variable cantidad.
         *****
         *   Return:
-        *       No retorna nada, por ahora.
+        *       No retorna nada.
         *****/
         void procesar(tElemArbol item, tElemArbol* arreglo, int& cantidad) {
             arreglo[cantidad] = item;
@@ -372,7 +372,7 @@ class tABB {
         *****
         *   Input:
         *       tElemArbol: Un puntero hacía arreglo.
-        *       int &: Obtiene la dirección de memoría de la variable cantidad.       
+        *       int &: Pasa por referencia la variable cantidad.       
         *****
         *   Returns:
         *       No retorna, solo recorre el ABB de formar in-orden
@@ -388,7 +388,7 @@ class tABB {
         *****
         *   Input:
         *       tElemArbol: Un puntero hacía arreglo.
-        *       int &: Obtiene la dirección de memoría de la variable cantidad.             
+        *       int &: Pasa por referencia la variable cantidad.             
         *****
         *   Returns:
         *       No retorna, solo recorre el ABB de formar pre-orden
@@ -404,7 +404,7 @@ class tABB {
         *****
         *   Input:
         *       tElemArbol: Un puntero hacía arreglo.
-        *       int &: Obtiene la dirección de memoría de la variable cantidad.      
+        *       int &: Pasa por referencia la variable cantidad.      
         *****
         *   Returns:
         *       No retorna, solo recorre el ABB de formar post-orden
