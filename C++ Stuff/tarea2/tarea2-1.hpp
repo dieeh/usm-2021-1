@@ -273,7 +273,8 @@ class tLista {
         *****/
         tElemLista getValue() {
             tElemLista a;
-            a = curr->sig->info;
+            a.coeficiente = curr->sig->info.coeficiente;
+            a.exponente = curr->sig->info.exponente;
             return a;
         }    
 

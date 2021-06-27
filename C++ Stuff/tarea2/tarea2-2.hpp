@@ -30,7 +30,7 @@ class tABB {
         *       tNodoArbolBin: Puntero a los nodos perteneciente al árbol
         *****
         *   Returns:
-        *       void, No retorna ya que borra todos los subarboles y se elimina a si mismo, dejandolo vacío
+        *       No retorna ya que borra todos los subarboles y se elimina a si mismo, dejandolo vacío
         *****/
         void clearHelp(tNodoArbolBin *nodo) {
             if (nodo == NULL) return;
@@ -42,10 +42,10 @@ class tABB {
         /*****
         *   void tABB::insertHelp
         *****
-        *   Función que inserta nodos en el árbol, o crea el árbol e insertar nodos
+        *   Función que inserta nodos en el árbol, o crea el nodo y lo inserta ene l árbol.
         *****
         *   Input:
-        *       tNodoArbolBin: Un puntero hacía nodos. 
+        *       tNodoArbolBin: Un puntero con referencia hacía nodo. 
         *       tElemArbol: Elemento o información que se desea agregar al árbol
         *       tNodoArbolBin: Puntero hacía el nodo padre (raíz)
         *****
@@ -77,13 +77,13 @@ class tABB {
         *   Función que remueve nodos del árbol, tanto como este no tenga, tenga 1 o tenga 2 hijos.   
         *****
         *   Input:
-        *       tNodoArbolBin: Un puntero hacía nodos. 
+        *       tNodoArbolBin: Un puntero con referencía hacía nodos. 
         *       tElemArbol: Elemento o información que se desea agregar al árbol   
         *****
         *   Return:
         *       No retorna, ya que solo elimina nodos, subarboles o árboles
         *****/
-        void removeHelp(tNodoArbolBin *nodo, tElemArbol item) {
+        void removeHelp(tNodoArbolBin *&nodo, tElemArbol item) {
             int caso;
             if(find(item.exponente) == 0) return;                                                                                
             tNodoArbolBin* aux = searchHelp(nodo, item.exponente);
@@ -141,7 +141,7 @@ class tABB {
         *****
         *   Input:
         *       tNodoArbolBin: Un puntero hacía nodos. 
-        *       tElemArbol: Elemento o información que se desea agregar al árbol.
+        *       unsigned int: exponente del monomio.
         *****
         *   Return:
         *       int, retorna la información que se encuentra en el nodo encontrado.
@@ -164,7 +164,9 @@ class tABB {
         *   Recorre el ABB de forma in-orden, visitando el hijo izquierdo, visita el nodo y visitando el hijo derecho.  
         *****
         *   Input:
-        *       tNodoArbolBin: Un puntero hacía nodos. 
+        *       tNodoArbolBin: Un puntero hacía nodo. 
+        *       tElemArbol: Un puntero hacía arreglo.
+        *       int &: Obtiene la dirección de memoría de la variable cantidad.
         *****
         *   Return:
         *       No retorna, solo recorre el árbol
@@ -184,6 +186,8 @@ class tABB {
         *****
         *   Input:
         *       tNodoArbolBin: Un puntero hacía nodos. 
+        *       tElemArbol: Un puntero hacía arreglo.
+        *       int &: Obtiene la dirección de memoría de la variable cantidad.
         *****
         *   Return:
         *       No retorna, solo recorre el árbol
@@ -201,7 +205,9 @@ class tABB {
         *   Recorre el ABB de forma post-orden, visita el hijo izquierdo, visita el hijo derecho y visita el nodo actual  
         *****
         *   Input:
-        *       tNodoArbolBin: Un puntero hacía nodos. 
+        *       tNodoArbolBin: Un puntero hacía nodos.
+        *       tElemArbol: Un puntero hacía arreglo.
+        *       int &: Obtiene la dirección de memoría de la variable cantidad. 
         *****
         *   Return:
         *       No retorna, solo recorre el árbol
@@ -221,7 +227,7 @@ class tABB {
         *****
         *   Input:
         *       tNodoArbolBin: Un puntero hacía nodos
-        *       tElemArbol: Elemento o información que se desea agregar al árbol
+        *       unsigned int: exponente del monomio.
         *****
         *   Return:
         *       Retorna un puntero hacía el nodo encontrado
@@ -245,6 +251,8 @@ class tABB {
         *****
         *   Input:
         *       tElemArbol: Elemento o información que se desea agregar al árbol
+        *       tElemArbol: Un puntero hacía la variable arreglo
+        *       int&: Obtiene la dirección de memoría de la variable cantidad.
         *****
         *   Return:
         *       No retorna nada, por ahora.
@@ -327,7 +335,7 @@ class tABB {
         }
 
         /*****
-        *   tNodoArbolBin* tABB::searchHelp
+        *   tNodoArbolBin* tABB::search
         *****
         *   Esta función busca un elemento en el arbol 
         *   y retorna el nodo al que pertence
@@ -348,7 +356,7 @@ class tABB {
         *   Función que retorna la cantidad de elementos pertenecientes al árbol
         *****
         *   Input:
-        *       No posee inputs        
+        *       unsigned int item: Elemento que se desea buscar en el árbol              
         *****
         *   Returns:
         *       int, Retorna la cantidad de elementos que hay en el ABB
@@ -363,7 +371,8 @@ class tABB {
         *   Función que llama a la función inOrdenHelp
         *****
         *   Input:
-        *       No posee inputs      
+        *       tElemArbol: Un puntero hacía arreglo.
+        *       int &: Obtiene la dirección de memoría de la variable cantidad.       
         *****
         *   Returns:
         *       No retorna, solo recorre el ABB de formar in-orden
@@ -378,7 +387,8 @@ class tABB {
         *   Función que llama a la función preOrdenHelp
         *****
         *   Input:
-        *       No posee inputs      
+        *       tElemArbol: Un puntero hacía arreglo.
+        *       int &: Obtiene la dirección de memoría de la variable cantidad.             
         *****
         *   Returns:
         *       No retorna, solo recorre el ABB de formar pre-orden
@@ -393,7 +403,8 @@ class tABB {
         *   Función que llama a la función postOrdenHelp
         *****
         *   Input:
-        *       No posee inputs      
+        *       tElemArbol: Un puntero hacía arreglo.
+        *       int &: Obtiene la dirección de memoría de la variable cantidad.      
         *****
         *   Returns:
         *       No retorna, solo recorre el ABB de formar post-orden
