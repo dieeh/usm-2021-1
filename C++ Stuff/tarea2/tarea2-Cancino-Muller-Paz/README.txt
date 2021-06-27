@@ -1,4 +1,4 @@
-La tarea fue compilada y ejecutada en Windows con MinGW y con WSL con el comando g++ "tareaX-X.cpp" -o "tareaX-X.exe" -Wall
+La tarea fue compilada y ejecutada en Windows con MinGW con el comando g++ "tareaX-X.cpp" -o "tareaX-X.exe" -Wall
 
 La tarea consiste en 4 archivos:
     - tarea2-1.cpp
