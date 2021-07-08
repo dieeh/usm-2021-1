@@ -2,7 +2,7 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: g++.exe compilar archivo activo",
+            "label": "C/C++: g++ (MinGW) compilar archivo activo",
             "command": "C:\\MinGW\\bin\\g++.exe",
             "args": [
                 "-g",
@@ -21,7 +21,7 @@
         },
         {
             "type": "cppbuild",
-            "label": "C/C++: g++ build active file",
+            "label": "C/C++: g++ (WSL) build active file",
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
