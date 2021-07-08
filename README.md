@@ -1,7 +1,10 @@
 # usm-2021-1
 
--Falta la actividad 2  
--La 1 ta ready  
--Hay que completar el nombres.txt  
--Terminar antes del viernes
+-Todo ready bbys  
+
+# tarea 3:
+
+-Plazo hasta el 5 de agosto!!  
+-Hay que avanzarla en vacas  
+-alo
 
