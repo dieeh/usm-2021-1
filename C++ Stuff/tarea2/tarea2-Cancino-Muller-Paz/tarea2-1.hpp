@@ -98,6 +98,13 @@ class tLista {
         *   int, retorna la posición en la lista donde se se inserto el elemento
         *****/
         int append(tElemLista item) {
+            if (head == tail){
+                head = new tNodo;
+                head->info = item;
+                head->sig = curr->sig;
+                listSize++;
+                return pos;
+            }
             while (curr != tail) {
                 curr = curr->sig;
                 pos++;
@@ -107,6 +114,7 @@ class tLista {
             curr->sig->sig = NULL;
             tail = curr->sig;
             listSize++;
+            if(listSize == 2) head->sig = tail;
             return pos;   
         }
 
@@ -273,7 +281,7 @@ class tLista {
         *****/
         tElemLista getValue() {
             tElemLista a;
-            a = curr->sig->info;
+            a = curr->info;
             return a;
         }    
 
