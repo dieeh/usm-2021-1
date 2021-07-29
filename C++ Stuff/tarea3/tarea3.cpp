@@ -9,7 +9,7 @@ using namespace std;
 
 int h(tipoClave k){
     string x = to_string(k);
-    int dig = x.lenght;
+    int dig = x.length();
     int mod = dig % 2;
     if (dig <= 6)
         return k;
