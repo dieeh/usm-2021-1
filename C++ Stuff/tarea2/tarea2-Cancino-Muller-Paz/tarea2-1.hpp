@@ -114,7 +114,10 @@ class tLista {
             curr->sig->sig = NULL;
             tail = curr->sig;
             listSize++;
-            if(listSize == 2) head->sig = tail;
+            if(listSize == 2){
+                head->sig = tail;
+                curr = tail;
+            }
             return pos;   
         }
 
