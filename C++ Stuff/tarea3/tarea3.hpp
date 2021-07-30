@@ -7,8 +7,17 @@ using namespace std;
 typedef int tipoClave;
 
 struct tipoInfo{
-    //aa
-};
+    int cod_producto;
+    char nombre_producto[31];
+    int precio;
+}producto;
+
+struct tipoInfo{
+    int cod_producto;
+    int cantidad_descuento;
+    int descuento;
+    int productos_equivalentes[10];
+}oferta;
 
 struct ranura{
     tipoClave clave;
@@ -30,14 +39,14 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
     }
 }
 
-tipoInfo hashSearch(ranura HT[], tipoClave k){
+tipoClave hashSearch(ranura HT[], tipoClave k){
     int inicio, i;
     int pos = inicio = h(k);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
         pos = (inicio + p(k, i)) % M;
     }
-    if (HT[pos].clave == k) return HT[pos].info;
+    if (HT[pos].clave == k) return HT[pos].clave;
     else {
-        return NULL; //arreglar esta wea
+        return VACIA;
     }
 }
