@@ -6,26 +6,18 @@
 #include "tarea3.hpp"
 
 using namespace std;
+#define e 0.692363
+#define M1 1000000
+#define M2 100000
 
-int h(tipoClave k){
-    string x = to_string(k);
-    int dig = x.length();
-    int mod = dig % 2;
-    if (dig <= 6)
-        return k;
-    else {
-        if (mod = 1) {dig += 1;}
-        x = to_string(num);
-        string y;
-        int lugar = dig/2;
-        for (int i = lugar - 3; i < lugar + 3; i++){
-            int k = 0;
-            y[k] = x[i];
-            k++;
-            }
-        int h = stoi(y);
-        return h;
-    }
+int hM1(tipoClave k){
+    int h = (M1*((e*k)%1));
+    return h;
+}
+
+int hM2(tipoClave k){
+    int h = (M2*((e*k)%1));
+    return h;
 }
 
 int h2(int h){
