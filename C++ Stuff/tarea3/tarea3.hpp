@@ -39,6 +39,8 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
         return 1;
     }
 }
+//que manera de costarle al nico JHSDSJD
+// siono? XDD
 
 tipoClave hashSearch(ranura HT[], tipoClave k){
     int inicio, i;
