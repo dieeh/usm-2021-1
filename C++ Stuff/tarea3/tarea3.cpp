@@ -10,16 +10,16 @@ using namespace std;
 #define M1 1000000
 #define M2 100000
 
-bool flag = False
+bool flag = false;
 
 int h(tipoClave k){
-    if (flag == False){
-        float h = (M2*((e*k)%1));
+    if (flag == false){
+        double h = (M2*((e*k)%1));
         int x = h;
         return x;
     }
     else {
-        float h = (M1*((e*k)%1));
+        double h = (M1*((e*k)%1));
         int x = h;
         return x;
     }
