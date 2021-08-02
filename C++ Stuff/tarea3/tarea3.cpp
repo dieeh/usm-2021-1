@@ -42,7 +42,7 @@ int main() {
         cerr << "Error al abrir el archivo '" << ruta << "'" << endl;
         exit(1);
     }
-    file1.read(A);
+    file1.read((char*)&A, sizeof(int));
     B = (A/0.7);
     ranura HT[B];
     file1.close();
@@ -54,7 +54,7 @@ int main() {
         cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
         exit(1);
     }
-    file1.read(A);
+    file1.read((char*)&A, sizeof(int));
     B = (A/0.7);
     ranura HT[B];
     file2.close(); 
