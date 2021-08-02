@@ -11,7 +11,6 @@ using namespace std;
 #define N 100000
 
 bool flag = false;
-
 int h(tipoClave k, int Z){
         double h = (Z*((e*k)%1));
         int x = h;
@@ -29,12 +28,12 @@ int h2(int h){
     return total;
 }
 
-int p(tipoClave k, int i){
-    return i*h2(k);
+int p(tipoClave k, int t){
+    return t*h2(k);
 }
 
 int main() {
-    int A,B;
+    int A,B,C,D;
     fstream file1;
     string ruta = "productos.dat";
     file1.open(ruta, ios::in|ios::binary);
@@ -43,10 +42,16 @@ int main() {
         exit(1);
     }
     file1.read((char*)&A, sizeof(int));
-    B = (A/0.7);
-    ranura HT[B];
+    A= (A/0.7);
+    typedef producto tipoInfo;
+    ranura* HT[A];
+    producto i;
+    for (int j = 0; j < A; j++){
+        file1.read((char*)&i, sizeof(producto));
+        hashInsert(HT[j], i.cod_producto, i, A);
+    }
     file1.close();
-    ranura HT[B];
+    
     fstream file2;
     string ruta2 = "ofertas.dat";
     file2.open(ruta2, ios::in|ios::binary);
@@ -54,9 +59,16 @@ int main() {
         cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
         exit(1);
     }
-    file1.read((char*)&A, sizeof(int));
-    B = (A/0.7);
-    ranura HT[B];
-    file2.close(); 
+    file1.read((char*)&B, sizeof(int));
+    B = (B/0.7);
+    typedef oferta tipoInfo;
+    ranura* HT2[B];
+    oferta g;
+    for (int j = 0; j < A; j++){
+        file2.read((char*)&g, sizeof(oferta));
+        hashInsert(HT2[j], i.cod_producto, i, B);
+    }
+    file2.close();
+    
     return 0;
 }
