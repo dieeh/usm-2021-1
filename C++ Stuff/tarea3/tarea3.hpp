@@ -32,7 +32,8 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
     }
     if (HT[pos].clave == k) {
         return 0;
-    }else {
+    }
+    else {
         HT[pos].clave = k;
         HT[pos].info = I;
         return 1;
