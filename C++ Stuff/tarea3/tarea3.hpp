@@ -26,7 +26,7 @@ struct ranura{
 
 int hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
     int inicio, i;
-    int pos = inicio = h(k);
+    int pos = inicio = h(k,B);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
         pos = (inicio + p(k, i)) % M;
     }
@@ -42,7 +42,7 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I) {
 
 tipoClave hashSearch(ranura HT[], tipoClave k){
     int inicio, i;
-    int pos = inicio = h(k);
+    int pos = inicio = h(k,B);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
         pos = (inicio + p(k, i)) % M;
     }

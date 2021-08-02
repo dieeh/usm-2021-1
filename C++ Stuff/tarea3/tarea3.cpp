@@ -34,9 +34,7 @@ int p(tipoClave k, int i){
 }
 
 int main() {
-    int A,B,d;
-    char c;
-    ranura HT[A];
+    int A,B;
     fstream file1;
     string ruta = "productos.dat";
     file1.open(ruta, ios::in|ios::binary);
@@ -44,9 +42,9 @@ int main() {
         cerr << "Error al abrir el archivo '" << ruta << "'" << endl;
         exit(1);
     }
-    file1.get(c);
-    d = (stoi(c)/0.7);
-
+    file1.read(A);
+    B = (A/0.7);
+    ranura HT[B];
     file1.close();
     ranura HT[B];
     fstream file2;
@@ -56,8 +54,9 @@ int main() {
         cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
         exit(1);
     }
+    file1.read(A);
+    B = (A/0.7);
+    ranura HT[B];
     file2.close(); 
-    file1.get(c);
-    d = (stoi(c)/0.7);
     return 0;
 }
