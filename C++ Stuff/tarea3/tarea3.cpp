@@ -36,17 +36,17 @@ int p(tipoClave k, int i){
 int main() {
     int A,B;
     ranura HT[A];
-    fstream file1;
-    ruta = "productos.dat";
+    fstream fileEmp, fileComp;
+    string ruta1 = "productos.dat";
     fileEmp.open(ruta1, ios::in|ios::binary);
     if (!fileEmp.is_open()) {
-        cerr << "Error al abrir el archivo '" << ruta << "'" << endl;
+        cerr << "Error al abrir el archivo '" << ruta1 << "'" << endl;
         exit(1);
     }
     fileEmp.close();
     ranura HT[B];
     fstream file2;
-    ruta2 = "ofertas.dat";
+    string ruta2 = "ofertas.dat";
     fileComp.open(ruta2, ios::in|ios::binary);
     if (!fileComp.is_open()) {
         cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
