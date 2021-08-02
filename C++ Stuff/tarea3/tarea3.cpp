@@ -10,14 +10,13 @@ using namespace std;
 #define M1 1000000
 #define M2 100000
 
-int hM1(tipoClave k){
-    int h = (M1*((e*k)%1));
-    return h;
-}
-
-int hM2(tipoClave k){
-    int h = (M2*((e*k)%1));
-    return h;
+int h(tipoClave k){
+    if (flag == False){
+        int h = (M1*((e*k)%1));
+    }
+    else {
+        int h = (M2*((e*k)%1));
+    }
 }
 
 int h2(int h){
