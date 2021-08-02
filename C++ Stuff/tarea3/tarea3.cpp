@@ -14,10 +14,14 @@ bool flag = False
 
 int h(tipoClave k){
     if (flag == False){
-        int h = (M2*((e*k)%1));
+        float h = (M2*((e*k)%1));
+        int x = h;
+        return x;
     }
     else {
-        int h = (M1*((e*k)%1));
+        float h = (M1*((e*k)%1));
+        int x = h;
+        return x;
     }
 }
 
