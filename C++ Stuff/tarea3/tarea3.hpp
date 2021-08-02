@@ -40,11 +40,7 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I, int X) {
         return 1;
     }
 }
-//que manera de costarle al nico JHSDSJD
-// siono? XDD
-//HASTA QUE PUDO JAJSHD tkm nico<33
-//nico t queremos >.<
-//carlos te amo y te meo
+
 tipoClave hashSearch(ranura HT[], tipoClave k, int X){
     int inicio, i;
     int pos = inicio = h(k,X);
