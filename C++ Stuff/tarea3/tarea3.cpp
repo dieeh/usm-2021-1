@@ -36,22 +36,22 @@ int p(tipoClave k, int i){
 int main() {
     int A,B;
     ranura HT[A];
-    fstream fileEmp, fileComp;
-    string ruta1 = "productos.dat";
-    fileEmp.open(ruta1, ios::in|ios::binary);
-    if (!fileEmp.is_open()) {
-        cerr << "Error al abrir el archivo '" << ruta1 << "'" << endl;
+    fstream file1;
+    ruta = "productos.dat";
+    file1.open(ruta1, ios::in|ios::binary);
+    if (!file1.is_open()) {
+        cerr << "Error al abrir el archivo '" << ruta << "'" << endl;
         exit(1);
     }
-    fileEmp.close();
+    file1.close();
     ranura HT[B];
     fstream file2;
-    string ruta2 = "ofertas.dat";
-    fileComp.open(ruta2, ios::in|ios::binary);
-    if (!fileComp.is_open()) {
+    ruta2 = "ofertas.dat";
+    file2.open(ruta2, ios::in|ios::binary);
+    if (!file2.is_open()) {
         cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
         exit(1);
     }
-    fileComp.close();  
+    file2.close();  
     return 0;
 }
