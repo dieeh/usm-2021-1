@@ -45,7 +45,7 @@ int main() {
         exit(1);
     }
     file1.get(c);
-    d = stoi(c);
+    d = (stoi(c)/0.7);
 
     file1.close();
     ranura HT[B];
@@ -58,6 +58,6 @@ int main() {
     }
     file2.close(); 
     file1.get(c);
-    d = stoi(c); 
+    d = (stoi(c)/0.7);
     return 0;
 }
