@@ -32,7 +32,8 @@ int h2(int h){
 }
 
 int p(tipoClave k, int i){
-    return i*h2(k);
+    if (flag  == False) {return i*hHM1(k);}
+    else {return i*hHM2(k);}
 }
 
 int main() {
