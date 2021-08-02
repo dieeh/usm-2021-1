@@ -37,7 +37,7 @@ int main() {
     int A,B;
     ranura HT[A];
     fstream file1;
-    ruta = "productos.dat";
+    string ruta = "productos.dat";
     file1.open(ruta1, ios::in|ios::binary);
     if (!file1.is_open()) {
         cerr << "Error al abrir el archivo '" << ruta << "'" << endl;
@@ -46,7 +46,7 @@ int main() {
     file1.close();
     ranura HT[B];
     fstream file2;
-    ruta2 = "ofertas.dat";
+    string ruta2 = "ofertas.dat";
     file2.open(ruta2, ios::in|ios::binary);
     if (!file2.is_open()) {
         cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
