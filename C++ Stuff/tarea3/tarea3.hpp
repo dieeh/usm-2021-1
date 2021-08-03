@@ -2,6 +2,7 @@
 
 using namespace std;
 #define M 1000000
+#define N 100000
 #define VACIA -1
 
 typedef int tipoClave;
@@ -20,6 +21,8 @@ struct oferta{
     int productos_equivalentes[10];
 };
 
+typedef producto tipoInfo;
+
 struct ranura{
     tipoClave clave;
     tipoInfo info;
@@ -29,7 +32,7 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I, int X) {
     int inicio, i;
     int pos = inicio = h(k,X);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
-        pos = (inicio + p(k, i)) % M;
+        pos = (inicio + p(k, i)) % X;
     }
     if (HT[pos].clave == k) {
         return 0;
@@ -45,10 +48,12 @@ tipoInfo hashSearch(ranura HT[], tipoClave k, int X){
     int inicio, i;
     int pos = inicio = h(k,X);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
-        pos = (inicio + p(k, i)) % M;
+        pos = (inicio + p(k, i)) % X;
     }
     if (HT[pos].clave == k) return HT[pos].info;
     else {
-        return VACIA;
+        tipoInfo a;
+        a.cod_producto = -1;
+        return a;
     }
 }

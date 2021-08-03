@@ -6,8 +6,6 @@
 
 using namespace std;
 #define e 0.692363
-#define M 1000000
-#define N 100000
 
 int h(tipoClave k, int Z){
     int x = (((int)(e*k)%1)*Z);
@@ -85,7 +83,6 @@ int main() {
     for (int k = 0; k < C; k++){
         getline(file3, r);
         int HT3[stoi(r)];
-        
         int total = 0;
         for (int l = 0; l < stoi(r); l++){
             getline(file3, u);
