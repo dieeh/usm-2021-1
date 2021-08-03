@@ -41,13 +41,13 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I, int X) {
     }
 }
 
-tipoClave hashSearch(ranura HT[], tipoClave k, int X){
+tipoInfo hashSearch(ranura HT[], tipoClave k, int X){
     int inicio, i;
     int pos = inicio = h(k,X);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
         pos = (inicio + p(k, i)) % M;
     }
-    if (HT[pos].clave == k) return HT[pos].clave;
+    if (HT[pos].clave == k) return HT[pos].info;
     else {
         return VACIA;
     }
