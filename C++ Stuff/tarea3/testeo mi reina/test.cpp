@@ -28,11 +28,16 @@ struct ofertas_activas{
 };
 
 int descuento2(int compras[], oferta HT2[], int cant, int B){
+    //int aux [cant];
+    //for (int r = 0; r < cant; r++){
+    //    aux[r] = compras[r];
+    //}
+    
     int descuento = 0, contador = 0, q = 0;
     int codigos_usados[cant];
     for (int i = 0; i < cant; i++){
-        bool flag = false;
-        int cod_oferta;
+        bool flag = false, flag2 = false;
+        int cod_oferta = 0, aux_compra = compras[i];
         for (int f = 0; f < cant; f++){
             if (compras[i] == codigos_usados[f]){
                 flag = true;
@@ -44,6 +49,7 @@ int descuento2(int compras[], oferta HT2[], int cant, int B){
                     if(compras[i] == HT2[j].productos_equivalentes[k]){
                         contador++;
                         cod_oferta = j;
+                        flag2 = true;
                     }
                 }
                 if (compras[i] == HT2[j].cod_producto) {
@@ -51,10 +57,11 @@ int descuento2(int compras[], oferta HT2[], int cant, int B){
                     cod_oferta = j;
                 }
             }
-            codigos_usados[q] = compras[i];
-            q++;
+            //codigos_usados[q] = aux_compra;
+            //q++;
             for (int w = 0; w < 10; w++){
-                if(HT2[cod_oferta].productos_equivalentes[w] != -1){
+                int aux_prod = HT2[cod_oferta].productos_equivalentes[w];
+                if(HT2[cod_oferta].productos_equivalentes[w] != -1 && flag2 == true){
                     codigos_usados[q] = HT2[cod_oferta].productos_equivalentes[w];
                     q++;
                 }
@@ -63,29 +70,32 @@ int descuento2(int compras[], oferta HT2[], int cant, int B){
         }
         descuento += ( contador / HT2[cod_oferta].cantidad_descuento ) * HT2[cod_oferta].descuento;
     }
+    //descuento += ( contador / HT2[cod_oferta].cantidad_descuento ) * HT2[cod_oferta].descuento;
     return descuento;
 };
 //
 //
-//int descuento2(int compras[], oferta HT2[], int cod, int B){
-//    int desc = 0;
-//    for (int i = 0; i < B; i++){
-//        int contador = 0;
-//        int paradescuento = HT2[i].cantidad_descuento;  
-//        for (int j = 0; j < cod ; j++){
-//            for (int k = 0; k < 10; k++){
-//                if ((compras[j] == HT2[i].cod_producto) || (compras[j] == HT2[i].productos_equivalentes[k])) {
-//                    contador++;
-//                    compras[j] = VACIO;
-//                }
-//            }
-//        }
-//        if (contador >= paradescuento){
-//            desc += (contador/paradescuento) * HT2[i].descuento;
-//        }
-//    }
-//    return desc;
-//};
+int descuento3(int compras[], oferta HT2[], int cant, int B){
+    int* usados = new int[cant];
+    for (int i = 0; i < cant; i++){
+        if (compras[i] == hashSearch(HT2, compras[i], B).cod_producto){
+            int contador = 0;
+            for (int j = 0; j < cant; j++){
+                for (int k = 0; k < 10; k++){
+                    if (compras[j] == hashSearch(HT2, compras[j], B).producto_equivalentes[k]){
+                        
+                       break; 
+                    }
+                    if (compras[j] == hashSearch(HT2, compras[j], B).cod_producto){
+                        
+                        break;
+                    }
+                    
+                }
+            }
+        }
+    }
+};
 
 int descuento(int compras[], oferta HT2[], int cant, int B, int A){
     ofertas_activas* Carlosteamo = new ofertas_activas[B];
@@ -179,12 +189,14 @@ int main() {
             
             }
             //descuent = descuento(compras, HT2, stoi(cant), B, A);
-            descuent = descuento2(compras, HT2, stoi(cant), B);
-            cout << descuent << endl;
+            //descuent = descuento2(compras, HT2, stoi(cant), B);
+            //cout << descuent << endl;
             //if (j == stoi(cant) - 1) {
             //    descuent = descuento(compras, HT2, stoi(cant), B);
             //}
         }
+        descuent = descuento2(compras, HT2, stoi(cant), B);
+        cout << descuent << endl;
         total -= descuent;
         delete[] compras;
         boleteo[i] = total;
