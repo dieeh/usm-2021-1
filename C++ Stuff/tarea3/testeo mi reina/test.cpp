@@ -19,121 +19,36 @@ struct oferta{
     int productos_equivalentes[10];
 };
 
-struct ofertas_activas{
-    int cod_producto;
-    int cantidad_descuento;
-    int cont;
-    int descuento;
-    int productos_equivalentes[10];
-};
-
-int descuento2(int compras[], oferta HT2[], int cant, int B){
-    //int aux [cant];
-    //for (int r = 0; r < cant; r++){
-    //    aux[r] = compras[r];
-    //}
-    
+int descuento2(int compras[], oferta ofertas[], int c_compras, int c_ofertas){
     int descuento = 0, contador = 0, q = 0;
-    int codigos_usados[cant];
-    for (int i = 0; i < cant; i++){
-        bool flag = false, flag2 = false;
-        int cod_oferta = 0, aux_compra = compras[i];
-        for (int f = 0; f < cant; f++){
-            if (compras[i] == codigos_usados[f]){
+    int codigos_usados[c_compras];
+    bool flag = false;
+    for (int i = 0; i < c_ofertas; i++) {
+        for (int j = 0; j < c_compras; j++){
+            if (ofertas[i].cod_producto == codigos_usados[j] ){
                 flag = true;
             }
         }
-        if (flag == false){
-            for (int j = 0; j < B; j++){
-                for (int k = 0; k < 10; k++){
-                    if(compras[i] == HT2[j].productos_equivalentes[k]){
-                        contador++;
-                        cod_oferta = j;
-                        flag2 = true;
-                    }
-                }
-                if (compras[i] == HT2[j].cod_producto) {
-                    contador++;
-                    cod_oferta = j;
-                }
+        if (flag == true) continue;
+        for (int k = 0; k < c_compras; k++){
+            if(compras[k] == ofertas[i].cod_producto) contador++;
+            for (int l = 0; l < 10; l++) {
+                if(compras[k] == ofertas[i].productos_equivalentes[l]) contador++;
             }
-            //codigos_usados[q] = aux_compra;
-            //q++;
-            for (int w = 0; w < 10; w++){
-                int aux_prod = HT2[cod_oferta].productos_equivalentes[w];
-                if(HT2[cod_oferta].productos_equivalentes[w] != -1 && flag2 == true){
-                    codigos_usados[q] = HT2[cod_oferta].productos_equivalentes[w];
-                    q++;
-                }
-            }
-            
         }
-        descuento += ( contador / HT2[cod_oferta].cantidad_descuento ) * HT2[cod_oferta].descuento;
+        codigos_usados[q] = ofertas[i].cod_producto;
+        q++;
+        for (int m = 0; m < 10; m++){
+            if(ofertas[i].productos_equivalentes[m] != -1){
+                codigos_usados[q] = ofertas[i].productos_equivalentes[m];
+                q++;
+            }
+        }
+        descuento += (contador / ofertas[i].cantidad_descuento)*ofertas[i].descuento;
+        contador = 0;
     }
-    //descuento += ( contador / HT2[cod_oferta].cantidad_descuento ) * HT2[cod_oferta].descuento;
     return descuento;
-};
-//
-//
-int descuento3(int compras[], oferta HT2[], int cant, int B){
-    int* usados = new int[cant];
-    for (int i = 0; i < cant; i++){
-        if (compras[i] == hashSearch(HT2, compras[i], B).cod_producto){
-            int contador = 0;
-            for (int j = 0; j < cant; j++){
-                for (int k = 0; k < 10; k++){
-                    if (compras[j] == hashSearch(HT2, compras[j], B).producto_equivalentes[k]){
-                        
-                       break; 
-                    }
-                    if (compras[j] == hashSearch(HT2, compras[j], B).cod_producto){
-                        
-                        break;
-                    }
-                    
-                }
-            }
-        }
-    }
-};
-
-int descuento(int compras[], oferta HT2[], int cant, int B, int A){
-    ofertas_activas* Carlosteamo = new ofertas_activas[B];
-    int cont = 0;
-    for (int i = 0; i < B; i++){ 
-        for (int j = 0; j < cant ; j++){
-            if (compras[j] == HT2[i].cod_producto){
-                Carlosteamo[i].cod_producto =  HT2[i].cod_producto;
-                Carlosteamo[i].cantidad_descuento =  HT2[i].cantidad_descuento;
-                Carlosteamo[i].cont = 0;
-                Carlosteamo[i].descuento =  HT2[i].descuento;
-                for (int k = 0; k < 10; k++){
-                    Carlosteamo[i].productos_equivalentes[k] =  HT2[i].productos_equivalentes[k];
-                }
-                cont +=1;
-                break;
-            }   
-        }
-    }
-    int desc_total = 0;
-    for (int l = 0; l < cont; l++){
-        for (int m = 0; m < cant ; m++){
-            for (int n = 0; n < 10 ; n++) {
-                if ((compras[m] == Carlosteamo[l].cod_producto) || (compras[m] == Carlosteamo[l].productos_equivalentes[n])) {
-                    Carlosteamo[l].cont++;
-                    break;
-                }
-            }
-        }
-        if (Carlosteamo[l].cont >= Carlosteamo[l].cantidad_descuento){
-            desc_total += (Carlosteamo[l].cont/Carlosteamo[l].cantidad_descuento) * Carlosteamo[l].descuento;
-        }
-    }
-    delete[] Carlosteamo;
-    return desc_total;
 }
-
-
 
 int main() {
     fstream file1, file2, file3, boleta;

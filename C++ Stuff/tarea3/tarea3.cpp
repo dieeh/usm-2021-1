@@ -7,24 +7,6 @@
 using namespace std;
 #define e 0.692363
 
-int h(tipoClave k, int Z){
-    int x = (((int)(e*k)%1)*Z);
-    return x;
-}
-
-int h2(int h){
-    int total = 0;
-    while(h > 0){
-        int sumar = 0;
-        sumar = h % 10;
-        total += sumar;
-    }
-    return total;
-}
-
-int p(tipoClave k, int t){
-    return t*h2(k);
-}
 
 int main() {
     int A,B,C;
