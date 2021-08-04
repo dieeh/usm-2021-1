@@ -49,10 +49,11 @@ int descuento2(int compras[], oferta ofertas[], int c_compras, int c_ofertas){
     }
     return descuento;
 }
+//
 
 int main() {
     fstream file1, file2, file3, boleta;
-    int A, B, C;
+    int A, B;
     file1.open("productos.dat", ios::in|ios::binary);
     if (!file1.is_open()) {
         cerr << "Error al abrir el archivo 'productos.dat'" << endl;

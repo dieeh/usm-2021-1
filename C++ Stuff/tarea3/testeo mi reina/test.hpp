@@ -1,10 +1,8 @@
 #include <iostream>
 
 using namespace std;
-#define M 1000000
-#define N 100000
 #define VACIA -1
-#define e 0.692363
+#define e 0.3926
 
 typedef int tipoClave;
 
@@ -14,7 +12,6 @@ struct producto{
     int precio;
 };
 
-
 struct oferta{
     int cod_producto;
     int cantidad_descuento;
@@ -22,13 +19,16 @@ struct oferta{
     int productos_equivalentes[10];
 };
 
-typedef producto tipoInfo;
-typedef oferta tipoInfo;
-
-struct ranura{
+struct ranuraP{
     tipoClave clave;
-    tipoInfo info;
+    producto info;
 };
+
+struct ranuraO{
+    tipoClave clave;
+    oferta info;
+};
+
 
 int h(tipoClave k, int Z){
     int x = (((int)(e*k)%1)*Z);
@@ -49,7 +49,7 @@ int p(int h, int t){
     return t*h2(h);
 }
 
-int hashInsert(ranura HT[], tipoClave k, tipoInfo I, int X) {
+int hashInsertProducto(ranuraP HT[], int k, producto I, int X) {
     int inicio, i;
     int pos = inicio = h(k,X);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
@@ -65,7 +65,23 @@ int hashInsert(ranura HT[], tipoClave k, tipoInfo I, int X) {
     }
 }
 
-tipoInfo hashSearch(ranura HT[], tipoClave k, int X){
+int hashInsertOferta(ranuraO HT[], int k, oferta I, int X) {
+    int inicio, i;
+    int pos = inicio = h(k,X);
+    for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
+        pos = (inicio + p(inicio, i)) % X;
+    }
+    if (HT[pos].clave == k) {
+        return 0;
+    }
+    else {
+        HT[pos].clave = k;
+        HT[pos].info = I;
+        return 1;
+    }
+}
+
+producto hashSearchProducto(ranuraP HT[], tipoClave k, int X){
     int inicio, i;
     int pos = inicio = h(k,X);
     for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
@@ -73,7 +89,21 @@ tipoInfo hashSearch(ranura HT[], tipoClave k, int X){
     }
     if (HT[pos].clave == k) return HT[pos].info;
     else {
-        tipoInfo a;
+        producto a;
+        a.cod_producto = -1;
+        return a;
+    }
+}
+
+oferta hashSearchOferta(ranuraO HT[], tipoClave k, int X){
+    int inicio, i;
+    int pos = inicio = h(k,X);
+    for (i = 1; HT[pos].clave != VACIA && HT[pos].clave != k; i++) {
+        pos = (inicio + p(k, i)) % X;
+    }
+    if (HT[pos].clave == k) return HT[pos].info;
+    else {
+        oferta a;
         a.cod_producto = -1;
         return a;
     }
