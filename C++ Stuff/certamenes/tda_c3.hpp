@@ -1,29 +1,35 @@
 typedef int tVertice;
 
-struct tGrafo{
-    
+struct parVertices{
+    tVertice vertice1;
+    tVertice vertice2;
 };
 
-void initGraph(tGrafo *G, int n){};
+struct tGrafo{
+    tVertice* V;
+    parVertices* A;
+};
 
-void destroyGraph(tGrafo *G){};
+void initGraph(tGrafo *G, int n){}; //inicializa el grafo
 
-int nVertex(tGrafo *G){};
+void destroyGraph(tGrafo *G){}; //libera la memoria usada por el grafo
 
-int nEdges(tGrafo *G){};
+int nVertex(tGrafo *G){}; //retorna numero de vertices
 
-tVertice first(tGrafo *G, tVertice v){};
+int nEdges(tGrafo *G){}; //retorna numero de arcos
 
-tVertice next(tGrafo *G, tVertice v, tVertice w){};
+tVertice first(tGrafo *G, tVertice v){};  //devuelve el primer vecino del vertice v
 
-void setEdge(tGrafo *G, tVertice v1, tVertice v2, int peso){};
+tVertice next(tGrafo *G, tVertice v, tVertice w){}; //devuelve el menor vecino menor que w
 
-void deleteEdge(tGrafo *G, tVertice v1, tVertice v2){};
+void setEdge(tGrafo *G, tVertice v1, tVertice v2, int peso){}; //agrega un nuevo arco
 
-int isEdge(tGrafo *G, tVertice v1, tVertice v2){};
+void deleteEdge(tGrafo *G, tVertice v1, tVertice v2){}; //borra un arco
 
-int weight(tGrafo *G, tVertice v1, tVertice v2){};
+int isEdge(tGrafo *G, tVertice v1, tVertice v2){}; //indica si existe un arco entre los vertices
 
-int getMark(tGrafo *G, tVertice v){};
+int weight(tGrafo *G, tVertice v1, tVertice v2){}; //devuelve el peso del arco entre v1 y v2
 
-void setMark(tGrafo *G, tVertice v, int marca){};
+int getMark(tGrafo *G, tVertice v){}; //obtiene la marca asignada
+
+void setMark(tGrafo *G, tVertice v, int marca){}; //marca un vertice
