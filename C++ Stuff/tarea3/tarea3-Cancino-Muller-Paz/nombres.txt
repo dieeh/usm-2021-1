@@ -1,11 +1,25 @@
 Nicolás Cancino Henriquez, 202004680-8, Paralelo 200
     Programó:
-
+        - main
+        - h
+        - h2
+        - hashInsertProducto
+        - hashInsertOferta
+        - hashSearchProducto
 
 Carlos Müller Navarro, 202004590-9, Paralelo 200
     Programó:
-
+        - main
+        - h2
+        - hashInsertProducto
+        - hashInsertOferta
+        - hashSearchOferta
 
 Diego Paz Letelier, 202004502-k, Paralelo 200
     Programó:
-
+        - descuentos1
+        - main
+        - p
+        - hashInsertProducto
+        - hashSearchProducto
+        - hashSearchOferta
