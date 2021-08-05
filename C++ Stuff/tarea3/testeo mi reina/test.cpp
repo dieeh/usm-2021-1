@@ -102,14 +102,7 @@ int main() {
                 if (stoi(cod) == HT[k].cod_producto){
                     total += HT[k].precio;
                 }
-            
             }
-            //descuent = descuento(compras, HT2, stoi(cant), B, A);
-            //descuent = descuento2(compras, HT2, stoi(cant), B);
-            //cout << descuent << endl;
-            //if (j == stoi(cant) - 1) {
-            //    descuent = descuento(compras, HT2, stoi(cant), B);
-            //}
         }
         descuent = descuento2(compras, HT2, stoi(cant), B);
         cout << descuent << endl;

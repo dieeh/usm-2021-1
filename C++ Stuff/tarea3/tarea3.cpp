@@ -9,76 +9,80 @@ using namespace std;
 
 
 int main() {
-    int A,B,C;
-    fstream file1, file2, file3, boleta;
-    string ruta = "productos.dat";
-    file1.open(ruta, ios::in|ios::binary);
-    if (!file1.is_open()) {
-        cerr << "Error al abrir el archivo '" << ruta << "'" << endl;
+    fstream f_prod, f_of, f_comp, f_bol;
+    string clientes, cant_comp, clave;
+    int A, B, a, b, i, j, k;
+    f_prod.open("productos.dat", ios::in | ios::binary);
+    if (!f_prod.is_open()) {
+        cerr << "Error al abrir el archivo 'productos.dat'" << endl;
         exit(1);
     }
-    file1.read((char*)&A, sizeof(int));
-    A = (A/0.7);
-    typedef producto tipoInfo;
-    ranura* HT = new ranura[A];
-    producto i;
-    for (int j = 0; j < A; j++){
-        file1.read((char*)&i, sizeof(producto));
-        hashInsert(&HT[j], i.cod_producto, i, A);
+    f_prod.read((char*)&a, sizeof(int));
+    A = round(a/0.7);
+    ranuraP* HT = new ranuraP[A];
+    producto producto_hash;
+    for (i = 0; i < a; i++) {
+        f_prod.read((char*)&producto_hash, sizeof(producto));
+        hashInsertProducto(HT, producto_hash.cod_producto, producto_hash, A);
     }
-    file1.close();
-    
-    
-    string ruta2 = "ofertas.dat";
-    file2.open(ruta2, ios::in|ios::binary);
-    if (!file2.is_open()) {
-        cerr << "Error al abrir el archivo '" << ruta2 << "'" << endl;
+    f_prod.close();
+
+    f_of.open("ofertas.dat", ios::in | ios::binary);
+    if(!f_of.is_open()){
+        cerr << "Error al abrir el archivo 'ofertas.dat'" << endl;
         exit(1);
     }
-    file2.read((char*)&B, sizeof(int));
-    B = (B/0.7);
-    typedef oferta tipoInfo;
-    ranura* HT2 = new ranura[B];
-    oferta g;
-    for (int j = 0; j < B; j++){
-        file2.read((char*)&g, sizeof(oferta));
-        hashInsert(&HT2[j], g.cod_producto, g, B);
+    f_of.read((char*)&b, sizeof(int));
+    B = round(b/0.7);
+    ranuraO* HT2 = new ranuraO[B];
+    oferta oferta_hash;
+    for (j = 0; j < b; j++){
+        f_of.read((char*)&oferta_hash, sizeof(oferta));
+        hashInsertOferta(HT2, oferta_hash.cod_producto, oferta_hash, B);
     }
-    file2.close();
+    f_of.close();
     
-    
-    string ruta3 = "compras.txt", r, u, Q; //ascii
-    file3.open(ruta3, ios::in);
-    if (!file3.is_open()) {
-        cerr << "Error al abrir el archivo '" << ruta3 << "'" << endl;
+    f_comp.open("compras.txt", ios::in);
+    if(!f_comp.is_open()){
+        cerr << "Error al abrir el archivo 'compras.txt'" << endl;
         exit(1);
     }
-    getline(file3, Q);
-    C = stoi(Q);
-    boleta.open("boleta.txt", ios::out);
-    if (!boleta.is_open()) {
-        cerr << "Error al abrir el archivo 'boleta.txt'" << endl;
-        exit(1);
-    }
-    boleta << Q;
-    
-    for (int k = 0; k < C; k++){
-        getline(file3, r);
-        int HT3[stoi(r)];
-        int total = 0;
-        for (int l = 0; l < stoi(r); l++){
-            getline(file3, u);
-            HT3[l] = stoi(u);
-            producto cliente = hashSearch(&HT[A], stoi(u), A);
-            total += cliente.precio;
+    getline(f_comp, clientes);
+    int Nclientes = stoi(clientes);
+    int* boletas = new int[Nclientes];
+    for (k = 0; k < Nclientes; k++){
+        int total = 0, descuento;
+        getline(f_comp, cant_comp);
+        int Ncompras = stoi(cant_comp);
+        int* compras_client = new int[Ncompras];
+        for (i = 0; i < Ncompras; i++){
+            getline(f_comp, clave);
+            int codigo = stoi(clave);
+            compras_client[i] = codigo;
+            total += hashSearchProducto(HT, codigo, A).precio;
         }
-        boleta << total;
+        descuento = 0;
+        total-= descuento;
+        delete[] compras_client;
+        boletas[k] = total;
     }
-    boleta.close();
-    file3.close();
+    f_comp.close();
+
+    f_bol.open("boletas.txt", ios::out);
+    if (!f_bol.is_open()) {
+        cerr << "Error al abrir el archivo 'boletas.txt'" << endl;
+        exit(1);
+    }
+    f_bol << clientes;
+    f_bol << "\n";
+    for (int j = 0; j < Nclientes; j++) {
+        f_bol << boletas[j];
+    }
+    f_bol.close();
 
 
     delete[] HT;
     delete[] HT2;
+    delete[] boletas;
     return 0;
 }

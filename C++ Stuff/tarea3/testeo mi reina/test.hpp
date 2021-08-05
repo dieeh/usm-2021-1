@@ -1,8 +1,9 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 #define VACIA -1
-#define e 0.3926
+#define e 0.692363  //variable arbitraria
 
 typedef int tipoClave;
 
@@ -31,8 +32,10 @@ struct ranuraO{
 
 
 int h(tipoClave k, int Z){
-    int x = (((int)(e*k)%1)*Z);
-    return x;
+    int w;
+    long x = (Z-1)*(fmod((e*k),1));
+    w = round(x);
+    return w; 
 }
 
 int h2(int h){
@@ -40,8 +43,10 @@ int h2(int h){
     while(h > 0){
         int sumar = 0;
         sumar = h % 10;
+        h = h/10;
         total += sumar;
     }
+    if (total == 0) return 1;
     return total;
 }
 
